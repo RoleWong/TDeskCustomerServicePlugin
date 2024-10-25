@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TUICustomerServicePluginMenuCellData : NSObject
 
+@property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) SEL cselector;
 @property (nonatomic, strong) id target;

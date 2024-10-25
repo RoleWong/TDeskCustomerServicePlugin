@@ -49,9 +49,9 @@
     float width = TUICustomerServicePluginBranchCellWidth - TUICustomerServicePluginBranchCellMargin * 2 - 5 - 6;
     CGRect rect = [content boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                         options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                     attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:16] }
+                                     attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:14] }
                                         context:nil];
-    return MAX(rect.size.height + 16, 36);
+    return 48;
 }
 
 #pragma mark - Collection Cell
@@ -184,6 +184,19 @@
                                       context:nil];
     return CGSizeMake(rect.size.width + margin, 32);
 }
+
++ (CGSize)calcMenuCellButtonSize:(NSString *)title containsIcon:(BOOL)containsIcon {
+    CGFloat margin = 28;
+    CGFloat iconWidth = containsIcon ? 10 : 0;
+    
+    CGRect rect = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, 32)
+                                      options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                   attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:14] }
+                                      context:nil];
+    
+    return CGSizeMake(rect.size.width + margin + iconWidth + (containsIcon ? 8 : 0), 32);
+}
+
 
 #pragma mark -Bot
 + (CGSize)calcBotBranchCellSize:(NSString *)header items:(NSArray *)items {

@@ -13,9 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TUIBotBranchItemCell : UITableViewCell
 @property (nonatomic, assign) BranchMsgSubType subType;
 @property (nonatomic, strong) UIImageView *topLine;
-@property (nonatomic, strong) UILabel *numberLabel;
+//@property (nonatomic, strong) UILabel *numberLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIImageView *arrowView;
+@property (nonatomic, strong) UIView *containerView;
 @end
 
 @interface TUIBotBranchCell : TUIBubbleMessageCell

@@ -57,6 +57,12 @@
 - (void)fillWithData:(TUICustomerServicePluginMenuCellData *)cellData {
     self.cellData = cellData;
     [self.button setTitle:cellData.title forState:UIControlStateNormal];
+    if(cellData.icon){
+        [self.button setImage:cellData.icon forState:UIControlStateNormal];
+        self.button.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+        self.button.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+          
+    }
     [self.button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     // tell constraints they need updating
@@ -76,8 +82,9 @@
 
 - (void)updateConstraints {
     [super updateConstraints];
-    
-    CGSize size = [TUICustomerServicePluginDataProvider calcMenuCellButtonSize:self.cellData.title];
+        
+    CGSize size = [TUICustomerServicePluginDataProvider calcMenuCellButtonSize:self.cellData.title containsIcon: self.cellData != nil];
+
     [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(12);
         make.top.mas_equalTo(8);
