@@ -122,6 +122,20 @@
     ];
     [TUICore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
+                   param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_TASK_BRANCH),
+                           TMessageCell_Name : @"TUICustomerServicePluginTaskBranchCell",
+                           TMessageCell_Data_Name : @"TUICustomerServicePluginTaskBranchCellData"
+                         }
+    ];
+    [TUICore callService:TUICore_TUIChatService
+                  method:TUICore_TUIChatService_AppendCustomMessageMethod
+                   param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_TASK_INFORMATION_COLLECTOR),
+                           TMessageCell_Name : @"TUICustomerServicePluginTaskInformationCollectorCell",
+                           TMessageCell_Data_Name : @"TUICustomerServicePluginTaskInformationCollectorCellData"
+                         }
+    ];
+    [TUICore callService:TUICore_TUIChatService
+                  method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Card),
                            TMessageCell_Name : @"TUICustomerServicePluginCardCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginCardCellData"

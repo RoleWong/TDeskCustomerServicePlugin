@@ -39,6 +39,7 @@
         _headerLabel = [[UILabel alloc] init];
         _headerLabel.font = [UIFont systemFontOfSize:12];
         _headerLabel.numberOfLines = 0;
+        _headerLabel.textAlignment = NSTextAlignmentCenter;
         _headerLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         _headerLabel.textColor = TUICustomerServicePluginDynamicColor(@"customer_service_evaluation_header_text_color", @"#1C1C1C");
         [self.backView addSubview:_headerLabel];
@@ -232,7 +233,7 @@
     [self.headerLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.backView);
         make.top.mas_equalTo(20);
-        make.width.mas_equalTo([TUICustomerServicePluginDataProvider calcEvaluationBubbleHeaderSize:self.customData.header].width);
+        make.width.mas_equalTo([TUICustomerServicePluginDataProvider calcEvaluationBubbleSize:self.customData.header score:self.customData.totalScore].width);
         make.height.mas_equalTo([TUICustomerServicePluginDataProvider calcEvaluationBubbleHeaderSize:self.customData.header].height);
     }];
 

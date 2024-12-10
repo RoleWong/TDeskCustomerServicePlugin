@@ -89,13 +89,13 @@
         _headerLabel.textColor = TUICustomerServicePluginDynamicColor(@"bot_branch_cell_header_text_color_1", @"#000000");
         [self.container addSubview:_headerLabel];
         
-//        _headerRefreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        _headerRefreshBtn.backgroundColor = [UIColor clearColor];
-//        [_headerRefreshBtn setTitle:TIMCommonLocalizableString(TUIChatBotChangeQuestion) forState:UIControlStateNormal];
-//        [_headerRefreshBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-//        [_headerRefreshBtn setTitleColor:TUICustomerServicePluginDynamicColor(@"bot_branch_cell_refresh_btn_color", @"#006EFF") forState:UIControlStateNormal];
-//        [_headerRefreshBtn addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventTouchUpInside];
-//        [self.container addSubview:_headerRefreshBtn];
+        _headerRefreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _headerRefreshBtn.backgroundColor = [UIColor clearColor];
+        [_headerRefreshBtn setTitle:TIMCommonLocalizableString(TUIChatBotChangeQuestion) forState:UIControlStateNormal];
+        [_headerRefreshBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [_headerRefreshBtn setTitleColor:TUICustomerServicePluginDynamicColor(@"bot_branch_cell_refresh_btn_color", @"#006EFF") forState:UIControlStateNormal];
+        [_headerRefreshBtn addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventTouchUpInside];
+        [self.container addSubview:_headerRefreshBtn];
         
         _headerRefreshView = [[UIImageView alloc] init];
         [_headerRefreshView setImage:TUICustomerServicePluginBundleThemeImage(@"bot_branch_cell_refresh_img", @"branch_cell_refresh")];
@@ -158,14 +158,14 @@
     self.headerLabel.text = data.header;
     if (BranchMsgSubType_Welcome == data.subType) {
 //        self.headerDotView.hidden = NO;
-//        self.headerRefreshBtn.hidden = NO;
+        self.headerRefreshBtn.hidden = NO;
         self.headerRefreshView.hidden = NO;
         self.headerBkView.hidden = NO;
         self.headerLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
         self.headerLabel.textColor = TUICustomerServicePluginDynamicColor(@"bot_branch_cell_header_text_color_1", @"#000000");
     } else {
 //        self.headerDotView.hidden = YES;
-//        self.headerRefreshBtn.hidden = YES;
+        self.headerRefreshBtn.hidden = YES;
         self.headerRefreshView.hidden = YES;
         self.headerBkView.hidden = YES;
         self.headerLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
@@ -233,17 +233,17 @@
             make.height.mas_equalTo(16);
         }];
         
-//        [self.headerRefreshBtn sizeToFit];
-//        [self.headerRefreshBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.trailing.mas_equalTo(self.headerRefreshView.mas_leading).offset(-TUIBotBranchCellMargin);
-//            make.centerY.mas_equalTo(self.headerBkView);
-//            make.size.mas_equalTo(self.headerRefreshBtn.frame.size);
-//        }];
+        [self.headerRefreshBtn sizeToFit];
+        [self.headerRefreshBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.trailing.mas_equalTo(self.headerRefreshView.mas_leading).offset(-TUIBotBranchCellMargin);
+            make.centerY.mas_equalTo(self.headerBkView);
+            make.size.mas_equalTo(self.headerRefreshBtn.frame.size);
+        }];
         
         [self.headerLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.leading.mas_equalTo(TUIBotBranchCellMargin);
 //            make.leading.mas_equalTo(self.headerDotView.mas_trailing).offset(TUIBotBranchCellMargin);
-//            make.trailing.mas_equalTo(self.headerRefreshBtn.mas_leading).offset(-TUIBotBranchCellMargin);
+            make.trailing.mas_equalTo(self.headerRefreshBtn.mas_leading).offset(-TUIBotBranchCellMargin);
             make.centerY.mas_equalTo(self.headerBkView);
             make.height.mas_equalTo(headerLabelSize.height);
         }];

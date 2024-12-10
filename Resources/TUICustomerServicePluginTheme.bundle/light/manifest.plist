@@ -36,6 +36,10 @@
 	<string>branch_cell_refresh.png</string>
 	<key>to_human_img</key>
 	<string>to_human.png</string>
+	<key>information_collection_done</key>
+	<string>information_collection_done.png</string>
+	<key>information_collection</key>
+	<string>information_collection.png</string>
 	<key>customer_service_card_item_desc_text_color</key>
 	<string>#999999</string>
 	<key>customer_service_card_input_bg_color</key>
