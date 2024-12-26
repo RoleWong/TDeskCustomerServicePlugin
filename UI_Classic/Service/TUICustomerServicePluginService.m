@@ -6,12 +6,12 @@
 //
 
 #import "TUICustomerServicePluginService.h"
-#import <TDeskChat/TUIChatConfig.h>
-#import <TDeskChat/TUIChatConversationModel.h>
-#import <TDeskCommon/TIMDefine.h>
-#import <TDeskCore/TUIThemeManager.h>
-#import <TDeskCore/TUICore.h>
-#import <TDeskCore/TUILogin.h>
+#import <TDeskChat/TDesk_TUIChatConfig.h>
+#import <TDeskChat/TDesk_TUIChatConversationModel.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
+#import <TDeskCore/TDesk_TUIThemeManager.h>
+#import <TDeskCore/TDesk_TUICore.h>
+#import <TDeskCore/TDesk_TUILogin.h>
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginPrivateConfig.h"
 #import "TUICustomerServicePluginExtensionObserver.h"
@@ -25,7 +25,7 @@
 + (void)load {
     NSLog(@"TUICustomerServicePluginService load");
     [TUICustomerServicePluginService sharedInstance];
-    TUIRegisterThemeResourcePath(TUICustomerServicePluginThemePath, TUIThemeModuleCustomerService);
+    TDeskRegisterThemeResourcePath(TUICustomerServicePluginThemePath, TUIThemeModuleCustomerService);
 }
 
 + (TUICustomerServicePluginService *)sharedInstance {
@@ -47,115 +47,115 @@
 }
 
 - (void)registerEvent {
-    [TUICore registerEvent:TUICore_TUIChatNotify
+    [TDeskCore registerEvent:TUICore_TUIChatNotify
                     subKey:TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey
                     object:self];
 }
 
 - (void)registerExtension {
-    [TUICore registerExtension:TUICore_TUIChatExtension_GetChatConversationModelParams object:self];
+    [TDeskCore registerExtension:TUICore_TUIChatExtension_GetChatConversationModelParams object:self];
 }
 
 - (void)registerCustomMessageCell {
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Evaluation),
                            TMessageCell_Name : @"TUICustomerServicePluginEvaluationCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginEvaluationCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_EvaluationSelected),
                            TMessageCell_Name : @"TUICustomerServicePluginInvisibleCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginInvisibleCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Typing),
-                           TMessageCell_Name : @"TUIMessageCell",
+                           TMessageCell_Name : @"TDeskMessageCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginTypingCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Branch),
                            TMessageCell_Name : @"TUICustomerServicePluginBranchCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginBranchCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_End),
-                           TMessageCell_Name : @"TUIMessageCell",
+                           TMessageCell_Name : @"TDeskMessageCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginInvisibleCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Timeout),
                            TMessageCell_Name : @"TUICustomerServicePluginInvisibleCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginInvisibleCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_EvaluationRule),
                            TMessageCell_Name : @"TUICustomerServicePluginInvisibleCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginInvisibleCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_EvaluationTrigger),
                            TMessageCell_Name : @"TUICustomerServicePluginInvisibleCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginInvisibleCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Collection),
                            TMessageCell_Name : @"TUICustomerServicePluginCollectionCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginCollectionCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_TASK_BRANCH),
                            TMessageCell_Name : @"TUICustomerServicePluginTaskBranchCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginTaskBranchCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_TASK_INFORMATION_COLLECTOR),
                            TMessageCell_Name : @"TUICustomerServicePluginTaskInformationCollectorCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginTaskInformationCollectorCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Card),
                            TMessageCell_Name : @"TUICustomerServicePluginCardCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginCardCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                       method:TUICore_TUIChatService_AppendCustomMessageMethod
                        param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Bot_Welcome_Clarify),
                                TMessageCell_Name : @"TUIBotBranchCell",
                                TMessageCell_Data_Name : @"TUIBotBranchCellData"
                              }
         ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Bot_Rich_Text),
                            TMessageCell_Name : @"TUIBotRichTextCell",
                            TMessageCell_Data_Name : @"TUIBotRichTextCellData"
                          }
     ];
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Bot_Stream_Text),
                            TMessageCell_Name : @"TUIBotStreamTextCell",
@@ -176,7 +176,7 @@
         if (![TUICustomerServicePluginPrivateConfig.sharedInstance isCustomerServiceAccount:userID]) {
             return;
         }
-        NSData *data = [TUITool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_Request}];
+        NSData *data = [TDeskTool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_Request}];
         [TUICustomerServicePluginDataProvider sendCustomMessageWithoutUpdateUI:data];
     }
 }

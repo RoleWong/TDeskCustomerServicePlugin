@@ -6,12 +6,12 @@
 //
 
 #import "TUICustomerServicePluginEvaluationCellData.h"
-#import <TDeskCommon/TUIMessageCellLayout.h>
+#import <TDeskCommon/TDesk_TUIMessageCellLayout.h>
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
 
 @implementation TUICustomerServicePluginEvaluationCellData
 
-+ (TUIMessageCellData *)getCellData:(V2TIMMessage *)message {
++ (TDeskMessageCellData *)getCellData:(V2TIMMessage *)message {
     NSDictionary *param = [NSJSONSerialization JSONObjectWithData:message.customElem.data
                                                           options:NSJSONReadingAllowFragments error:nil];
     if (param == nil) {
@@ -52,7 +52,7 @@
     return TIMCommonLocalizableString(TUICustomerServiceSatisfactionEvaluation);
 }
 
-- (instancetype)initWithDirection:(TMsgDirection)direction
+- (instancetype)initWithDirection:(TDeskMsgDirection)direction
 {
     self = [super initWithDirection:direction];
     if (self) {

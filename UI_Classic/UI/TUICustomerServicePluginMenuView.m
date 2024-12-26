@@ -6,9 +6,9 @@
 //
 
 #import "TUICustomerServicePluginMenuView.h"
-#import <TDeskCore/TUICore.h>
-#import <TDeskCore/TUIDefine.h>
-#import <TDeskCommon/TIMDefine.h>
+#import <TDeskCore/TDesk_TUICore.h>
+#import <TDeskCore/TDesk_TUIDefine.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
 
 @interface TUICustomerServicePluginMenuCellData()

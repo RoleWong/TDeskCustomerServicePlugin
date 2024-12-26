@@ -5,7 +5,7 @@
 //  Created by xia on 2023/5/30.
 //
 
-#import <TDeskCommon/TUIBubbleMessageCell.h>
+#import <TDeskCommon/TDesk_TUIBubbleMessageCell.h>
 #import "TUICustomerServicePluginBranchCellData.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface TUICustomerServicePluginBranchCell : TUIBubbleMessageCell
+@interface TUICustomerServicePluginBranchCell : TDeskBubbleMessageCell
 
 @property (nonatomic, strong) UILabel *headerLabel;
 //@property (nonatomic, strong) NSMutableArray *itemButtons;

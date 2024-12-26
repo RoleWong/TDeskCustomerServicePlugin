@@ -6,7 +6,7 @@
 //
 
 #import "TUIBotStreamTextCellData.h"
-#import <TDeskCore/TUICore.h>
+#import <TDeskCore/TDesk_TUICore.h>
 
 #ifndef CGFLOAT_CEIL
 #ifdef CGFLOAT_IS_DOUBLE
@@ -17,7 +17,7 @@
 #endif
 
 @implementation TUIBotStreamTextCellData
-+ (TUIMessageCellData *)getCellData:(V2TIMMessage *)message {
++ (TDeskMessageCellData *)getCellData:(V2TIMMessage *)message {
     NSDictionary *param = [NSJSONSerialization JSONObjectWithData:message.customElem.data
                                                           options:NSJSONReadingAllowFragments error:nil];
     if (param == nil) {
@@ -58,7 +58,7 @@
     }
     self.innerMessage = newMessage;
     self.content = [self.class getDisplayString:newMessage];
-    [TUICore notifyEvent:TUICore_TUIPluginNotify
+    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
                   subKey:TUICore_TUIPluginNotify_DidChangePluginViewSubKey
                   object:nil
                    param:@{TUICore_TUIPluginNotify_DidChangePluginViewSubKey_Data : self}];

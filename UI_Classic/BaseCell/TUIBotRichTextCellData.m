@@ -7,11 +7,11 @@
 //
 
 #import "TUIBotRichTextCellData.h"
-#import <TDeskCommon/TIMDefine.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
 
 @implementation TUIBotRichTextCellData
 
-+ (TUIMessageCellData *)getCellData:(V2TIMMessage *)message {
++ (TDeskMessageCellData *)getCellData:(V2TIMMessage *)message {
     NSDictionary *param = [NSJSONSerialization JSONObjectWithData:message.customElem.data
                                             options:NSJSONReadingAllowFragments error:nil];
     if (param == nil) {

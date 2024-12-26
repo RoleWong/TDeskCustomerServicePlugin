@@ -5,7 +5,7 @@
 //  Created by Role Wong on 11/7/24.
 //
 
-#import <TDeskChat/TUITextMessageCell.h>
+#import <TDeskChat/TDesk_TUITextMessageCell.h>
 #import "TUIBotStreamTextCellData.h"
 
 #ifndef TUICustomerServicePluginTaskBranchCellData_h
@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TUICustomerServicePluginTaskBranchCellData : TUIBubbleMessageCellData
+@interface TUICustomerServicePluginTaskBranchCellData : TDeskBubbleMessageCellData
 
 @property (nonatomic, copy) NSString *header;
 @property (nonatomic, assign) NSInteger taskStatus;

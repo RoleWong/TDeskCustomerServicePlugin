@@ -7,8 +7,8 @@
 
 #import "TUICustomerServicePluginPhraseView.h"
 #import "TUICustomerServicePluginDataProvider.h"
-#import <TDeskCore/TUIDefine.h>
-#import <TDeskCommon/TIMDefine.h>
+#import <TDeskCore/TDesk_TUIDefine.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
 
 @interface TUICustomerServicePluginPhraseView() <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 

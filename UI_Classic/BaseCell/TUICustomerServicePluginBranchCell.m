@@ -8,7 +8,7 @@
 #import "TUICustomerServicePluginBranchCell.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
-#import <TDeskCommon/TIMDefine.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
 
 @implementation TUICustomerServicePluginBranchItemCell
 
@@ -111,7 +111,7 @@
 }
 
 // Override, the size of bubble content.
-+ (CGSize)getContentSize:(TUIMessageCellData *)data {
++ (CGSize)getContentSize:(TDeskMessageCellData *)data {
     NSAssert([data isKindOfClass:TUICustomerServicePluginBranchCellData.class],
              @"data must be a kind of TUICustomerServicePluginBranchCellData");
     TUICustomerServicePluginBranchCellData *branchCellData = (TUICustomerServicePluginBranchCellData *)data;

@@ -6,9 +6,9 @@
 //
 
 #import "TUICustomerServicePluginExtensionObserver.h"
-#import <TDeskCore/TUICore.h>
-#import <TDeskCore/TUIDefine.h>
-#import <TDeskCore/TUIThemeManager.h>
+#import <TDeskCore/TDesk_TUICore.h>
+#import <TDeskCore/TDesk_TUIDefine.h>
+#import <TDeskCore/TDesk_TUIThemeManager.h>
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginCardInputView.h"
 #import "TUICustomerServicePluginConfig.h"
@@ -16,13 +16,13 @@
 #import "TUICustomerServicePluginAccountController.h"
 #import "TUICustomerServicePluginMenuView.h"
 #import "TUICustomerServicePluginPhraseView.h"
-#import <TDeskChat/TUIBaseChatViewController.h>
+#import <TDeskChat/TDesk_TUIBaseChatViewController.h>
 #import "TUICustomerServicePluginProductInfo.h"
 #import "TUICustomerServicePluginUserController.h"
 
 @interface TUICustomerServicePluginExtensionObserver () <TUIExtensionProtocol>
 
-@property (nonatomic, weak) TUIBaseChatViewController *superVC;
+@property (nonatomic, weak) TDeskBaseChatViewController *superVC;
 
 @end
 
@@ -30,11 +30,11 @@
 
 static id _instance = nil;
 + (void)load {
-    [TUICore registerExtension:TUICore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
-    [TUICore registerExtension:TUICore_TUIContactExtension_ContactMenu_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
-    [TUICore registerExtension:TUICore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
-    [TUICore registerExtension:TUICore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
-    [TUICore registerExtension:TUICore_TUIChatExtension_ClickAvatar_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TUICore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TUICore_TUIContactExtension_ContactMenu_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TUICore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TUICore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TUICore_TUIChatExtension_ClickAvatar_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
 }
 
 + (instancetype)shareInstance {
@@ -87,7 +87,7 @@ static id _instance = nil;
     evaluation.text = TIMCommonLocalizableString(TUIKitMoreEvaluation);
     evaluation.icon = TIMCommonBundleThemeImage(@"service_more_customer_service_evaluation_img", @"more_customer_service_evaluation");
     evaluation.onClicked = ^(NSDictionary *_Nonnull param) {
-        NSData *data = [TUITool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_EvaluationTrigger}];
+        NSData *data = [TDeskTool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_EvaluationTrigger}];
         [TUICustomerServicePluginDataProvider sendCustomMessageWithoutUpdateUI:data];
     };
     return @[evaluation];
@@ -106,7 +106,7 @@ static id _instance = nil;
     [TUICustomerServicePluginPrivateConfig checkCommercialAbility];
     
     UINavigationController *nav = [param tui_objectForKey:TUICore_TUIContactExtension_ContactMenu_Nav asClass:UINavigationController.class];
-    [TUITool addValueAddedUnsupportNeedContactNotificationInVC:nav debugOnly:YES];
+    [TDeskTool addValueAddedUnsupportNeedContactNotificationInVC:nav debugOnly:YES];
     
     TUIExtensionInfo *customerService = [[TUIExtensionInfo alloc] init];
     customerService.weight = 50;
@@ -114,7 +114,7 @@ static id _instance = nil;
     customerService.icon = TUICustomerServicePluginBundleThemeImage(@"customer_service_contact_menu_icon_img", @"contact_customer_service");
     customerService.onClicked = ^(NSDictionary *_Nonnull param) {
         if (![TUICustomerServicePluginPrivateConfig isCustomerServiceSupported]) {
-            [TUITool postValueAddedUnsupportNeedContactNotification:TIMCommonLocalizableString(TUICustomerService)];
+            [TDeskTool postValueAddedUnsupportNeedContactNotification:TIMCommonLocalizableString(TUICustomerService)];
             NSLog(@"TUICustomerService ability is not supported");
             return;
         }
@@ -212,7 +212,7 @@ static id _instance = nil;
 // Menu Event reponse
 - (void)notifyHeightChanged {
     NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight: @46};
-    [TUICore notifyEvent:TUICore_TUIPluginNotify
+    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
                   subKey:TUICore_TUIPluginNotify_PluginViewDidAddToSuperview
                   object:nil
                    param:param];
@@ -232,14 +232,14 @@ static id _instance = nil;
                                          @"pic": info.picURL ?: @"",
                                          @"url": info.linkURL ?: @""}
     };
-    NSData *data = [TUITool dictionary2JsonData:dict];
+    NSData *data = [TDeskTool dictionary2JsonData:dict];
     [TUICustomerServicePluginDataProvider sendCustomMessage:data];
 }
 
 - (void)onPhraseClicked {
     [self.superVC.inputController reset];
     TUICustomerServicePluginPhraseView *view = [[TUICustomerServicePluginPhraseView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height)];
-    UIWindow *window = [TUITool applicationKeywindow];
+    UIWindow *window = [TDeskTool applicationKeywindow];
     [window addSubview:view];
 }
 

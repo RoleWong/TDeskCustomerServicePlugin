@@ -9,9 +9,9 @@
 
 @implementation TUICustomerServicePluginTypingCellData
 
-+ (TUIMessageCellData *)getCellData:(V2TIMMessage *)message {
++ (TDeskMessageCellData *)getCellData:(V2TIMMessage *)message {
     NSDictionary *param = [NSJSONSerialization JSONObjectWithData:message.customElem.data options:NSJSONReadingAllowFragments error:nil];
-    TUITypingStatusCellData *cellData = [[TUITypingStatusCellData alloc] initWithDirection:message.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
+    TDeskTypingStatusCellData *cellData = [[TDeskTypingStatusCellData alloc] initWithDirection:message.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];
     cellData.msgID = message.msgID;
 
     if ([param[@"src"] isEqualToString: BussinessID_Src_CustomerService_Typing]) {

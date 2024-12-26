@@ -8,7 +8,7 @@
 #import "TUICustomerServicePluginEvaluationCell.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
-#import <TDeskCore/TUICore.h>
+#import <TDeskCore/TDesk_TUICore.h>
 
 @interface TUICustomerServicePluginEvaluationCell()
 
@@ -73,7 +73,7 @@
                                               @"content": self.customData.itemDict[itemID] ? : @"",
                                               @"sessionId": self.customData.sessionID ? : @""},
                            @"src": BussinessID_Src_CustomerService_EvaluationSelected};
-    NSData *data = [TUITool dictionary2JsonData:dict];
+    NSData *data = [TDeskTool dictionary2JsonData:dict];
     [TUICustomerServicePluginDataProvider sendCustomMessageWithoutUpdateUI:data];
 }
 
@@ -97,7 +97,7 @@
 
 - (void)notifyCellSizeChanged {
     NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.customData.innerMessage};
-    [TUICore notifyEvent:TUICore_TUIPluginNotify
+    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
                   subKey:TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey
                   object:nil
                    param:param];

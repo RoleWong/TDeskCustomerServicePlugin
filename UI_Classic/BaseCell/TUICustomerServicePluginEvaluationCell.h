@@ -5,12 +5,12 @@
 //  Created by xia on 2023/5/30.
 //
 
-#import <TDeskCommon/TUIMessageCell.h>
+#import <TDeskCommon/TDesk_TUIMessageCell.h>
 #import "TUICustomerServicePluginEvaluationCellData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TUICustomerServicePluginEvaluationCell : TUIMessageCell
+@interface TUICustomerServicePluginEvaluationCell : TDeskMessageCell
 
 @property (nonatomic, strong) UIView *backView;
 

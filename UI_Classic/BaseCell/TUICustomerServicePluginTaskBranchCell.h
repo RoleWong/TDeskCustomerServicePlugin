@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface TUICustomerServicePluginTaskBranchCell : TUIBubbleMessageCell
+@interface TUICustomerServicePluginTaskBranchCell : TDeskBubbleMessageCell
 
 @property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UILabel *headerViewLabel;

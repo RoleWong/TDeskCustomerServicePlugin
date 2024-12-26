@@ -6,8 +6,8 @@
 //
 
 #import "TUICustomerServicePluginConfig.h"
-#import <TDeskCore/TUICore.h>
-#import <TDeskCore/TUIDefine.h>
+#import <TDeskCore/TDesk_TUICore.h>
+#import <TDeskCore/TDesk_TUIDefine.h>
 #import "TUICustomerServicePluginMenuView.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginExtensionObserver.h"

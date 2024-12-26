@@ -7,9 +7,9 @@
 //
 
 #import "TUIBotRichTextCell.h"
-#import <TDeskChat/TUITextMessageCell.h>
-#import <TDeskCommon/TIMDefine.h>
-#import <TDeskCore/TUICore.h>
+#import <TDeskChat/TDesk_TUITextMessageCell.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
+#import <TDeskCore/TDesk_TUICore.h>
 #import <WebKit/WebKit.h>
 
 @interface TUIBotRichTextCell ()<WKNavigationDelegate>
@@ -24,7 +24,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self.container addSubview:self.webView];
-        self.webViewTextColor = [TUITextMessageCell incommingTextColor];
+        self.webViewTextColor = [TDeskTextMessageCell incommingTextColor];
     }
     return self;
 }
@@ -126,8 +126,8 @@
     return markdown;
 }
 
-#pragma mark - TUIMessageCellProtocol
-+ (CGSize)getContentSize:(TUIMessageCellData *)data {
+#pragma mark - TDeskMessageCellProtocol
++ (CGSize)getContentSize:(TDeskMessageCellData *)data {
     if ([data isKindOfClass:[TUIBotRichTextCellData class]]) {
         return CGSizeMake(TRichTextMessageCell_Width_Max, [(TUIBotRichTextCellData *)data cellHeight]);
     }
@@ -196,7 +196,7 @@
 
 - (void)notifyCellSizeChanged {
     NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.webViewData.innerMessage};
-    [TUICore notifyEvent:TUICore_TUIPluginNotify
+    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
                   subKey:TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey
                   object:nil
                    param:param];

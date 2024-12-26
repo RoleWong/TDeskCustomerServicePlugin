@@ -6,7 +6,7 @@
 //
 
 
-#import <TDeskChat/TUITextMessageCell.h>
+#import <TDeskChat/TDesk_TUITextMessageCell.h>
 #import "TUIBotStreamTextCellData.h"
 
 #ifndef TUICustomerServicePluginTaskInformationCollectorCellData_h
@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TUICustomerServicePluginTaskInformationCollectorCellData : TUIBubbleMessageCellData
+@interface TUICustomerServicePluginTaskInformationCollectorCellData : TDeskBubbleMessageCellData
 
 @property (nonatomic, copy) NSString *tip;
 @property (nonatomic, assign) NSInteger nodeStatus;

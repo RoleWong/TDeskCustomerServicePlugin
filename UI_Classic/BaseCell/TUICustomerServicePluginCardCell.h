@@ -5,12 +5,12 @@
 //  Created by xia on 2023/5/30.
 //
 
-#import <TDeskCommon/TUIBubbleMessageCell.h>
+#import <TDeskCommon/TDesk_TUIBubbleMessageCell.h>
 #import "TUICustomerServicePluginCardCellData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TUICustomerServicePluginCardCell : TUIBubbleMessageCell
+@interface TUICustomerServicePluginCardCell : TDeskBubbleMessageCell
 
 @property (nonatomic, strong) UILabel *headerLabel;
 @property (nonatomic, strong) UILabel *descLabel;

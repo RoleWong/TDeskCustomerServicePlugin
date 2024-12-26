@@ -5,8 +5,8 @@
 //  Created by lynx on 2023/10/30.
 //
 
-#import <TDeskCommon/TUIMessageCell.h>
-#import <TDeskCommon/TUIBubbleMessageCellData.h>
+#import <TDeskCommon/TDesk_TUIMessageCell.h>
+#import <TDeskCommon/TDesk_TUIBubbleMessageCellData.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, BranchMsgSubType) {
     BranchMsgSubType_Clarify = 1,
 };
 
-@interface TUIBotBranchCellData : TUIBubbleMessageCellData
+@interface TUIBotBranchCellData : TDeskBubbleMessageCellData
 
 @property (nonatomic, assign) BranchMsgSubType subType;
 @property (nonatomic, copy) NSString *header;

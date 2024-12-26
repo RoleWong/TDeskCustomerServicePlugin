@@ -5,7 +5,7 @@
 //  Created by lynx on 2023/10/30.
 //
 
-#import <TDeskCommon/TUIBubbleMessageCell.h>
+#import <TDeskCommon/TDesk_TUIBubbleMessageCell.h>
 #import "TUIBotBranchCellData.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *containerView;
 @end
 
-@interface TUIBotBranchCell : TUIBubbleMessageCell
+@interface TUIBotBranchCell : TDeskBubbleMessageCell
 @property (nonatomic, strong) UIImageView *headerBkView;
 @property (nonatomic, strong) UIImageView *headerDotView;
 @property (nonatomic, strong) UILabel *headerLabel;

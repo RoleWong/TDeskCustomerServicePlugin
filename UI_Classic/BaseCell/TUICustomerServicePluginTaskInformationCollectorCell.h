@@ -23,7 +23,7 @@
 
 @end
 
-@interface TUICustomerServicePluginTaskInformationCollectorCell : TUIBubbleMessageCell
+@interface TUICustomerServicePluginTaskInformationCollectorCell : TDeskBubbleMessageCell
 
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UIButton *confirmButton;

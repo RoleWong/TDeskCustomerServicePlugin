@@ -12,7 +12,7 @@
 
 @implementation TUICustomerServicePluginTaskInformationCollectorCellData
 
-+ (TUIMessageCellData *)getCellData:(V2TIMMessage *)message {
++ (TDeskMessageCellData *)getCellData:(V2TIMMessage *)message {
     NSDictionary *param = [NSJSONSerialization JSONObjectWithData:message.customElem.data
                                                           options:NSJSONReadingAllowFragments error:nil];
     if (param == nil) {

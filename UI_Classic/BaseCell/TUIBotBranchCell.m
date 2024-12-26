@@ -8,9 +8,9 @@
 #import "TUIBotBranchCell.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
-#import <TDeskCommon/TIMDefine.h>
-#import <TDeskCommon/TIMRTLUtil.h>
-#import <TDeskCore/TUICore.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
+#import <TDeskCommon/TDesk_TIMRTLUtil.h>
+#import <TDeskCore/TDesk_TUICore.h>
 
 @implementation TUIBotBranchItemCell
 
@@ -145,7 +145,7 @@
 
 - (void)notifyCellSizeChanged {
     NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.customData.innerMessage};
-    [TUICore notifyEvent:TUICore_TUIPluginNotify
+    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
                   subKey:TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey
                   object:nil
                    param:param];
@@ -183,7 +183,7 @@
 }
 
 // Override, the size of bubble content.
-+ (CGSize)getContentSize:(TUIMessageCellData *)data {
++ (CGSize)getContentSize:(TDeskMessageCellData *)data {
     NSAssert([data isKindOfClass:TUIBotBranchCellData.class],
              @"data must be a kind of TUIBotBranchCellData");
     TUIBotBranchCellData *branchCellData = (TUIBotBranchCellData *)data;

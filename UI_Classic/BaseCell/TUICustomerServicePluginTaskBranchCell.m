@@ -9,7 +9,7 @@
 #import "TUICustomerServicePluginTaskBranchCell.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
-#import <TDeskCore/TUICore.h>
+#import <TDeskCore/TDesk_TUICore.h>
 
 @implementation TUICustomerServicePluginTaskBranchItemCell
 
@@ -70,7 +70,7 @@
         [self setupHeaderLabel];
         [self setupListCollectionViews];
         
-        [TUICore registerEvent:TUICore_TUIChatNotify
+        [TDeskCore registerEvent:TUICore_TUIChatNotify
                         subKey:TUICore_TUIChatNotify_KeyboardWillHideSubKey
                         object:self];
     }
@@ -165,7 +165,7 @@
 
 - (void)notifyCellSizeChanged {
     NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.customData.innerMessage};
-    [TUICore notifyEvent:TUICore_TUIPluginNotify
+    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
                   subKey:TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey
                   object:nil
                    param:param];

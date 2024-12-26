@@ -6,8 +6,8 @@
 //
 
 #import "TUIBotStreamTextCell.h"
-#import <TDeskCommon/TIMDefine.h>
-#import <TDeskCore/TUICore.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
+#import <TDeskCore/TDesk_TUICore.h>
 
 @implementation TUIBotStreamTextCell
 - (void)fillWithData:(TUIBotStreamTextCellData *)data {
@@ -64,7 +64,7 @@
 
 - (void)notifyCellSizeChanged {
     NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.textData.innerMessage};
-    [TUICore notifyEvent:TUICore_TUIPluginNotify
+    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
                   subKey:TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey
                   object:nil
                    param:param];

@@ -6,11 +6,11 @@
 //
 
 //#import "TUICustomerServicePluginUserController.h"
-//#import <TDeskCommon/TIMCommonModel.h>
+//#import <TDeskCommon/TDesk_TIMCommonModel.h>
 //#import <TUIContact/TUICommonContactTextCell.h>
 //#import <TUIContact/TUICommonContactSwitchCell.h>
 //#import <TUIContact/TUICommonContactProfileCardCell.h>
-//#import <TDeskCore/TUICore.h>
+//#import <TDeskCore/TDesk_TUICore.h>
 //
 //@interface TUICustomerServicePluginUserController ()
 //
@@ -123,14 +123,14 @@
 //            @strongify(self);
 //            [V2TIMManager.sharedInstance clearC2CHistoryMessage:userID
 //                succ:^{
-//                  [TUICore notifyEvent:TUICore_TUIConversationNotify
+//                  [TDeskCore notifyEvent:TUICore_TUIConversationNotify
 //                                subKey:TUICore_TUIConversationNotify_ClearConversationUIHistorySubKey
 //                                object:self
 //                                 param:nil];
-//                  [TUITool makeToast:@"success"];
+//                  [TDeskTool makeToast:@"success"];
 //                }
 //                fail:^(int code, NSString *desc) {
-//                  [TUITool makeToastError:code msg:desc];
+//                  [TDeskTool makeToastError:code msg:desc];
 //                }];
 //          }]];
 //        [ac tuitheme_addAction:[UIAlertAction actionWithTitle:TIMCommonLocalizableString(Cancel) style:UIAlertActionStyleCancel handler:nil]];
@@ -190,7 +190,7 @@
 //}
 //
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-//    TUICommonCellData *data = self.dataList[indexPath.section][indexPath.row];
+//    TDeskCommonCellData *data = self.dataList[indexPath.section][indexPath.row];
 //    return [data heightOfWidth:Screen_Width];
 //}
 //
@@ -221,7 +221,7 @@
 //                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 //                pasteboard.string = textCell.textData.value;
 //                NSString *toastString = [NSString stringWithFormat:@"已将 %@ 复制到粘贴板", textCell.textData.key];
-//                [TUITool makeToast:toastString];
+//                [TDeskTool makeToast:toastString];
 //            }
 //        } else if ([data isKindOfClass:[TUICommonContactProfileCardCell class]]) {
 //            TUICommonContactProfileCardCell *profileCard = (TUICommonContactProfileCardCell *)data;
@@ -229,7 +229,7 @@
 //                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 //                pasteboard.string = profileCard.cardData.identifier;
 //                NSString *toastString = [NSString stringWithFormat:@"已将该用户账号复制到粘贴板"];
-//                [TUITool makeToast:toastString];
+//                [TDeskTool makeToast:toastString];
 //            }
 //        }
 //    }

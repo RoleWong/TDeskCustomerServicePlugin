@@ -6,7 +6,7 @@
 //
 
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
-#import <TDeskCore/TUIDefine.h>
+#import <TDeskCore/TDesk_TUIDefine.h>
 
 @implementation TUICustomerServicePluginDataProvider (CalculateSize)
 

@@ -46,7 +46,7 @@
 
 - (void)onTapped:(UITapGestureRecognizer *)recognizer {
     NSURL *url = [NSURL URLWithString:self.customData.jumpURL ? : @""];
-    [TUITool openLinkWithURL:url];
+    [TDeskTool openLinkWithURL:url];
 }
 
 - (void)fillWithData:(TUICustomerServicePluginCardCellData *)data {

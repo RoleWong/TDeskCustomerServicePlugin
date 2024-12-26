@@ -5,12 +5,12 @@
 //  Created by xia on 2023/5/30.
 //
 
-#import <TDeskCommon/TUIMessageCell.h>
-#import <TDeskCommon/TUIMessageCellData.h>
+#import <TDeskCommon/TDesk_TUIMessageCell.h>
+#import <TDeskCommon/TDesk_TUIMessageCellData.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TUICustomerServicePluginEvaluationCellData : TUIMessageCellData
+@interface TUICustomerServicePluginEvaluationCellData : TDeskMessageCellData
 
 @property (nonatomic, copy) NSString *header;
 @property (nonatomic, copy) NSString *tail;

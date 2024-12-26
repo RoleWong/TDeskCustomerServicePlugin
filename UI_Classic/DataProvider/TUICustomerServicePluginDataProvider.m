@@ -6,8 +6,8 @@
 //
 
 #import "TUICustomerServicePluginDataProvider.h"
-#import <TDeskCore/TUICore.h>
-#import <TDeskCore/TUIDefine.h>
+#import <TDeskCore/TDesk_TUICore.h>
+#import <TDeskCore/TDesk_TUIDefine.h>
 #import <ImSDK_Plus/ImSDK_Plus.h>
 
 @implementation TUICustomerServicePluginDataProvider
@@ -18,7 +18,7 @@
         return;
     }
     NSDictionary *param = @{TUICore_TUIChatService_SendMessageMethod_MsgKey: message};
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_SendMessageMethod
                    param:param];
 }
@@ -29,7 +29,7 @@
         return;
     }
     NSDictionary *param = @{TUICore_TUIChatService_SendMessageMethod_MsgKey: message};
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_SendMessageMethod
                    param:param];
 }
@@ -40,19 +40,19 @@
         return;
     }
     NSDictionary *param = @{TUICore_TUIChatService_SendMessageMethodWithoutUpdateUI_MsgKey: message};
-    [TUICore callService:TUICore_TUIChatService
+    [TDeskCore callService:TUICore_TUIChatService
                   method:TUICore_TUIChatService_SendMessageMethodWithoutUpdateUI
                    param:param];
 }
 
 + (NSData *)supplyCustomerServiceID:(NSData *)data {
-    NSDictionary *dic = [TUITool jsonData2Dictionary:data];
+    NSDictionary *dic = [TDeskTool jsonData2Dictionary:data];
     if (!dic || 0 == dic.allKeys.count || [dic objectForKey:BussinessID_CustomerService]) {
         return data;
     }
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:dic];
     [param setObject:@(0) forKey:BussinessID_CustomerService];
-    return [TUITool dictionary2JsonData:param];
+    return [TDeskTool dictionary2JsonData:param];
 }
 
 @end

@@ -5,11 +5,11 @@
 //  Created by lynx on 2023/10/30.
 //
 
-#import <TDeskChat/TUITextMessageCellData.h>
+#import <TDeskChat/TDesk_TUITextMessageCellData.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TUIBotStreamTextCellData : TUITextMessageCellData
+@interface TUIBotStreamTextCellData : TDeskTextMessageCellData
 @property(nonatomic, strong) dispatch_source_t timer;
 @property(nonatomic, strong) UIFont *contentFont;
 @property(nonatomic, strong) NSAttributedString *contentString;

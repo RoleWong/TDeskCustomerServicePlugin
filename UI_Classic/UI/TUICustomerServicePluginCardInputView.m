@@ -7,8 +7,8 @@
 
 #import "TUICustomerServicePluginCardInputView.h"
 #import "TUICustomerServicePluginDataProvider.h"
-#import <TDeskCore/TUIDefine.h>
-#import <TDeskCommon/TIMDefine.h>
+#import <TDeskCore/TDesk_TUIDefine.h>
+#import <TDeskCommon/TDesk_TIMDefine.h>
 
 @interface TUICustomerServicePluginCardInputItemCell()
 
@@ -303,7 +303,7 @@
                                          @"pic": pic,
                                          @"url": url}
     };
-    NSData *data = [TUITool dictionary2JsonData:dict];
+    NSData *data = [TDeskTool dictionary2JsonData:dict];
     [TUICustomerServicePluginDataProvider sendCustomMessage:data];
     
     [self removeFromSuperview];

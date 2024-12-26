@@ -9,7 +9,7 @@
 #import "TUICustomerServicePluginTaskInformationCollectorCell.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
-#import <TDeskCore/TUICore.h>
+#import <TDeskCore/TDesk_TUICore.h>
 
 @implementation TaskInformationColloctorModalView
 
@@ -582,7 +582,7 @@
         [self.confirmButton addTarget:self action:@selector(confirmButtonTapped) forControlEvents:UIControlEventTouchUpInside];
         [self.container addSubview:self.confirmButton];
 
-        [TUICore registerEvent:TUICore_TUIChatNotify
+        [TDeskCore registerEvent:TUICore_TUIChatNotify
                         subKey:TUICore_TUIChatNotify_KeyboardWillHideSubKey
                         object:self];
     }

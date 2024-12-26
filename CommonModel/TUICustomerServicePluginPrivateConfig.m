@@ -6,7 +6,7 @@
 //
 
 #import "TUICustomerServicePluginPrivateConfig.h"
-#import <TDeskChat/TUIChatConfig.h>
+#import <TDeskChat/TDesk_TUIChatConfig.h>
 
 static const long long kTUICustomerServiceCommercialAbility = 1LL << 40;
 static BOOL gEnableCustomerService = NO;
@@ -43,7 +43,7 @@ static NSString *gDefaultCustomerServiceAccount = @"@customer_service_account";
 
 #pragma mark - Private
 + (void)checkCommercialAbility {
-    [TUITool checkCommercialAbility:kTUICustomerServiceCommercialAbility
+    [TDeskTool checkCommercialAbility:kTUICustomerServiceCommercialAbility
                                succ:^(BOOL enabled) {
         gEnableCustomerService = enabled;
     }

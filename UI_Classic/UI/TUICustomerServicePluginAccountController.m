@@ -7,13 +7,13 @@
 
 //#import "TUICustomerServicePluginAccountController.h"
 //
-//#import <TDeskCommon/TIMDefine.h>
-//#import <TDeskCore/TUIThemeManager.h>
+//#import <TDeskCommon/TDesk_TIMDefine.h>
+//#import <TDeskCore/TDesk_TUIThemeManager.h>
 //#import "ReactiveObjC.h"
 //#import <TUIContact/TUICommonContactCell.h>
 //#import "TUICustomerServicePluginPrivateConfig.h"
-//#import <TDeskChat/TUIChatConversationModel.h>
-//#import <TDeskChat/TUIC2CChatViewController.h>
+//#import <TDeskChat/TDesk_TUIChatConversationModel.h>
+//#import <TDeskChat/TDesk_TUIC2CChatViewController.h>
 //
 //@interface TUICustomerServicePluginAccountController()
 //
@@ -73,10 +73,10 @@
 //    if (userID.length == 0) {
 //        return;
 //    }
-//    TUIChatConversationModel *conversationModel = [[TUIChatConversationModel alloc] init];
+//    TDeskChatConversationModel *conversationModel = [[TDeskChatConversationModel alloc] init];
 //    conversationModel.userID = userID;
 //    conversationModel.conversationID = [NSString stringWithFormat:@"c2c_%@", userID];
-//    TUIC2CChatViewController *chatVC = [[TUIC2CChatViewController alloc] init];
+//    TDeskC2CChatViewController *chatVC = [[TDeskC2CChatViewController alloc] init];
 //    chatVC.conversationData = conversationModel;
 //    chatVC.title = conversationModel.title;
 //    [self.navigationController pushViewController:chatVC animated:YES];

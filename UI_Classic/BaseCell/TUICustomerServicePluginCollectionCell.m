@@ -8,7 +8,7 @@
 #import "TUICustomerServicePluginCollectionCell.h"
 #import "TUICustomerServicePluginDataProvider.h"
 #import "TUICustomerServicePluginDataProvider+CalculateSize.h"
-#import <TDeskCore/TUICore.h>
+#import <TDeskCore/TDesk_TUICore.h>
 
 @implementation TUICustomerServicePluginCollectionItemCell
 
@@ -55,7 +55,7 @@
         [self setupListCollectionViews];
         [self setupInputCollectionViews];
         
-        [TUICore registerEvent:TUICore_TUIChatNotify
+        [TDeskCore registerEvent:TUICore_TUIChatNotify
                         subKey:TUICore_TUIChatNotify_KeyboardWillHideSubKey
                         object:self];
     }

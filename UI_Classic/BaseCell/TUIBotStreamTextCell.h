@@ -5,12 +5,12 @@
 //  Created by lynx on 2023/10/30.
 //
 
-#import <TDeskChat/TUITextMessageCell.h>
+#import <TDeskChat/TDesk_TUITextMessageCell.h>
 #import "TUIBotStreamTextCellData.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TUIBotStreamTextCell : TUITextMessageCell
+@interface TUIBotStreamTextCell : TDeskTextMessageCell
 - (void)fillWithData:(TUIBotStreamTextCellData *)data;
 @end
 
