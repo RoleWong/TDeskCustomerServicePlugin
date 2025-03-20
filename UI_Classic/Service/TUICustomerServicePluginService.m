@@ -47,8 +47,8 @@
 }
 
 - (void)registerEvent {
-    [TDeskCore registerEvent:TUICore_TUIChatNotify
-                    subKey:TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey
+    [TDeskCore registerEvent:TUICore_TDeskNotify
+                    subKey:TUICore_TDeskNotify_ChatVC_ViewDidLoadSubKey
                     object:self];
 }
 
@@ -166,8 +166,8 @@
 
 #pragma mark - TUINotificationProtocol
 - (void)onNotifyEvent:(NSString *)key subKey:(NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param {
-    if ([key isEqualToString:TUICore_TUIChatNotify] &&
-        [subKey isEqualToString:TUICore_TUIChatNotify_ChatVC_ViewDidLoadSubKey]) {
+    if ([key isEqualToString:TUICore_TDeskNotify] &&
+        [subKey isEqualToString:TUICore_TDeskNotify_ChatVC_ViewDidLoadSubKey]) {
         if (param == nil) {
             NSLog(@"TUIChat notify param is invalid");
             return;
@@ -176,9 +176,36 @@
         if (![TUICustomerServicePluginPrivateConfig.sharedInstance isCustomerServiceAccount:userID]) {
             return;
         }
-        NSData *data = [TDeskTool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_Request}];
+        NSString *language = [self getPreferredLanguage];
+        NSData *data = [TDeskTool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_Request,
+                                                        @"customerServicePlugin": @0,
+                                                        @"triggeredContent": @{@"language": language}
+                                                      }];
         [TUICustomerServicePluginDataProvider sendCustomMessageWithoutUpdateUI:data];
     }
+}
+
+- (NSString *)getPreferredLanguage {
+    NSString *appLanguage = [NSLocale preferredLanguages].firstObject;
+    
+    NSDictionary *languageMap = @{
+        @"zh-Hans": @"zh",
+        @"zh-Hant": @"zh-TW",
+        @"zh-TW": @"zh-TW",
+        @"en": @"en",
+        @"id": @"id",
+        @"vi": @"vi",
+        @"ja": @"ja",
+        @"fil": @"fil"
+    };
+    
+    for (NSString *key in languageMap.allKeys) {
+        if ([appLanguage hasPrefix:key]) {
+            return languageMap[key];
+        }
+    }
+    
+    return @"en";
 }
 
 #pragma mark - TUIExtensionProtocol
