@@ -16,7 +16,7 @@
 #import "TUICustomerServicePluginPrivateConfig.h"
 #import "TUICustomerServicePluginExtensionObserver.h"
 
-@interface TUICustomerServicePluginService() <TUINotificationProtocol, TUIExtensionProtocol>
+@interface TUICustomerServicePluginService() <TDeskNotificationProtocol, TDeskExtensionProtocol>
 
 @end
 
@@ -164,7 +164,7 @@
     ];
 }
 
-#pragma mark - TUINotificationProtocol
+#pragma mark - TDeskNotificationProtocol
 - (void)onNotifyEvent:(NSString *)key subKey:(NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param {
     if ([key isEqualToString:TUICore_TDeskNotify] &&
         [subKey isEqualToString:TUICore_TDeskNotify_ChatVC_ViewDidLoadSubKey]) {
@@ -208,8 +208,8 @@
     return @"en";
 }
 
-#pragma mark - TUIExtensionProtocol
-- (nullable NSArray<TUIExtensionInfo *> *)onGetExtension:(NSString *)extensionID param:(nullable NSDictionary *)param {
+#pragma mark - TDeskExtensionProtocol
+- (nullable NSArray<TDeskExtensionInfo *> *)onGetExtension:(NSString *)extensionID param:(nullable NSDictionary *)param {
     if ([extensionID isEqualToString:TUICore_TUIChatExtension_GetChatConversationModelParams]) {
         if (extensionID == nil) {
             NSLog(@"extensionID is invalid");
@@ -219,7 +219,7 @@
         if (!userID || ![TUICustomerServicePluginPrivateConfig.sharedInstance isCustomerServiceAccount:userID]) {
             return nil;
         }
-        TUIExtensionInfo *extensionInfo = [[TUIExtensionInfo alloc] init];
+        TDeskExtensionInfo *extensionInfo = [[TDeskExtensionInfo alloc] init];
         extensionInfo.data = @{TUICore_TUIChatExtension_GetChatConversationModelParams_MsgNeedReadReceipt : @(YES),
                                TUICore_TUIChatExtension_GetChatConversationModelParams_EnableVideoCall : @(NO),
                                TUICore_TUIChatExtension_GetChatConversationModelParams_EnableAudioCall : @(NO),

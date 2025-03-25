@@ -58,7 +58,7 @@
 @end
 
 
-@interface TUICustomerServicePluginTaskBranchCell() <UITableViewDelegate, UITableViewDataSource, TUINotificationProtocol>
+@interface TUICustomerServicePluginTaskBranchCell() <UITableViewDelegate, UITableViewDataSource, TDeskNotificationProtocol>
 
 @end
 
@@ -208,7 +208,7 @@
     return cell;
 }
 
-#pragma mark - TUINotificationProtocol
+#pragma mark - TDeskNotificationProtocol
 - (void)onNotifyEvent:(NSString *)key subKey:(NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param {
     if ([key isEqualToString:TUICore_TUIChatNotify] &&
         [subKey isEqualToString:TUICore_TUIChatNotify_KeyboardWillHideSubKey]) {

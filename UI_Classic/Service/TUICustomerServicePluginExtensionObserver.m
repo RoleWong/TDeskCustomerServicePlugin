@@ -20,7 +20,7 @@
 #import "TUICustomerServicePluginProductInfo.h"
 #import "TUICustomerServicePluginUserController.h"
 
-@interface TUICustomerServicePluginExtensionObserver () <TUIExtensionProtocol>
+@interface TUICustomerServicePluginExtensionObserver () <TDeskExtensionProtocol>
 
 @property (nonatomic, weak) TDeskBaseChatViewController *superVC;
 
@@ -45,9 +45,9 @@ static id _instance = nil;
     return _instance;
 }
 
-#pragma mark - TUIExtensionProtocol
+#pragma mark - TDeskExtensionProtocol
 #pragma mark -- GetExtension
-- (NSArray<TUIExtensionInfo *> *)onGetExtension:(NSString *)extensionID param:(NSDictionary *)param {
+- (NSArray<TDeskExtensionInfo *> *)onGetExtension:(NSString *)extensionID param:(NSDictionary *)param {
     if (![extensionID isKindOfClass:NSString.class]) {
         return nil;
     }
@@ -70,7 +70,7 @@ static id _instance = nil;
 }
 
 // InputViewMoreItem
-- (NSArray<TUIExtensionInfo *> *)getInputViewMoreItemExtensionForClassicChat:(NSDictionary *)param {
+- (NSArray<TDeskExtensionInfo *> *)getInputViewMoreItemExtensionForClassicChat:(NSDictionary *)param {
     if (![param isKindOfClass:NSDictionary.class]) {
         return nil;
     }
@@ -82,7 +82,7 @@ static id _instance = nil;
         return nil;
     }
     
-    TUIExtensionInfo *evaluation = [[TUIExtensionInfo alloc] init];
+    TDeskExtensionInfo *evaluation = [[TDeskExtensionInfo alloc] init];
     evaluation.weight = 100;
     evaluation.text = TIMCommonLocalizableString(TUIKitMoreEvaluation);
     evaluation.icon = TIMCommonBundleThemeImage(@"service_more_customer_service_evaluation_img", @"more_customer_service_evaluation");
@@ -93,13 +93,13 @@ static id _instance = nil;
     return @[evaluation];
 }
 
-- (NSArray<TUIExtensionInfo *> *)getInputViewMoreItemExtensionForMinimalistChat:(NSDictionary *)param {
+- (NSArray<TDeskExtensionInfo *> *)getInputViewMoreItemExtensionForMinimalistChat:(NSDictionary *)param {
     // todo: 精简版 chat 页面底部输入框扩展
     return nil;
 }
 
 // ContactMenu
-- (NSArray<TUIExtensionInfo *> *)getContactMenuExtensionForClassicChat:(NSDictionary *)param {
+- (NSArray<TDeskExtensionInfo *> *)getContactMenuExtensionForClassicChat:(NSDictionary *)param {
     if (![param isKindOfClass:NSDictionary.class]) {
         return nil;
     }
@@ -108,7 +108,7 @@ static id _instance = nil;
     UINavigationController *nav = [param tui_objectForKey:TUICore_TUIContactExtension_ContactMenu_Nav asClass:UINavigationController.class];
     [TDeskTool addValueAddedUnsupportNeedContactNotificationInVC:nav debugOnly:YES];
     
-    TUIExtensionInfo *customerService = [[TUIExtensionInfo alloc] init];
+    TDeskExtensionInfo *customerService = [[TDeskExtensionInfo alloc] init];
     customerService.weight = 50;
     customerService.text = TIMCommonLocalizableString(TUICustomerServiceAccounts);
     customerService.icon = TUICustomerServicePluginBundleThemeImage(@"customer_service_contact_menu_icon_img", @"contact_customer_service");
@@ -124,12 +124,12 @@ static id _instance = nil;
     return @[customerService];
 }
 
-- (NSArray<TUIExtensionInfo *> *)getContactMenuExtensionForMinimalistChat:(NSDictionary *)param {
+- (NSArray<TDeskExtensionInfo *> *)getContactMenuExtensionForMinimalistChat:(NSDictionary *)param {
     return nil;
 }
 
 // Navigation more item
-- (NSArray<TUIExtensionInfo *> *)getNavigationMoreItemExtensionForClassicChat:(NSDictionary *)param {
+- (NSArray<TDeskExtensionInfo *> *)getNavigationMoreItemExtensionForClassicChat:(NSDictionary *)param {
     if (![param isKindOfClass:NSDictionary.class]) {
         return nil;
     }
@@ -138,7 +138,7 @@ static id _instance = nil;
     if (userID.length == 0 || ![TUICustomerServicePluginPrivateConfig.sharedInstance isCustomerServiceAccount:userID]) {
         return nil;
     }
-    TUIExtensionInfo *info = [[TUIExtensionInfo alloc] init];
+    TDeskExtensionInfo *info = [[TDeskExtensionInfo alloc] init];
     info.icon = TUIContactBundleThemeImage(@"chat_nav_more_menu_img", @"chat_nav_more_menu");
     info.weight = 200;
     info.onClicked = ^(NSDictionary *_Nonnull param) {
@@ -158,7 +158,7 @@ static id _instance = nil;
 }
 
 // Customizing action when clicking avatar
-- (NSArray<TUIExtensionInfo *> *)getClickAvtarExtensionForClassicChat:(NSDictionary *)param {
+- (NSArray<TDeskExtensionInfo *> *)getClickAvtarExtensionForClassicChat:(NSDictionary *)param {
     if (![param isKindOfClass:NSDictionary.class]) {
         return nil;
     }
@@ -167,7 +167,7 @@ static id _instance = nil;
     if (userID.length == 0 || ![TUICustomerServicePluginPrivateConfig.sharedInstance isCustomerServiceAccount:userID]) {
         return nil;
     }
-    TUIExtensionInfo *info = [[TUIExtensionInfo alloc] init];
+    TDeskExtensionInfo *info = [[TDeskExtensionInfo alloc] init];
     info.onClicked = ^(NSDictionary *_Nonnull param) {
         UINavigationController *nav = [param tui_objectForKey:TUICore_TUIChatExtension_ClickAvatar_PushVC
                                                       asClass:UINavigationController.class];
