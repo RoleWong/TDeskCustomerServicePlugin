@@ -70,8 +70,8 @@
         [self setupHeaderLabel];
         [self setupListCollectionViews];
         
-        [TDeskCore registerEvent:TUICore_TUIChatNotify
-                        subKey:TUICore_TUIChatNotify_KeyboardWillHideSubKey
+        [TDeskCore registerEvent:TDeskCore_TUIChatNotify
+                        subKey:TDeskCore_TUIChatNotify_KeyboardWillHideSubKey
                         object:self];
     }
     return self;
@@ -164,9 +164,9 @@
 }
 
 - (void)notifyCellSizeChanged {
-    NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.customData.innerMessage};
-    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
-                  subKey:TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey
+    NSDictionary *param = @{TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.customData.innerMessage};
+    [TDeskCore notifyEvent:TDeskCore_TUIPluginNotify
+                  subKey:TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey
                   object:nil
                    param:param];
 }
@@ -210,8 +210,8 @@
 
 #pragma mark - TDeskNotificationProtocol
 - (void)onNotifyEvent:(NSString *)key subKey:(NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param {
-    if ([key isEqualToString:TUICore_TUIChatNotify] &&
-        [subKey isEqualToString:TUICore_TUIChatNotify_KeyboardWillHideSubKey]) {
+    if ([key isEqualToString:TDeskCore_TUIChatNotify] &&
+        [subKey isEqualToString:TDeskCore_TUIChatNotify_KeyboardWillHideSubKey]) {
     }
 }
 

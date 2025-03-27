@@ -133,12 +133,12 @@
 
 - (NSArray *)defaultInfo {
     return @[
-        TIMCommonLocalizableString(TUICustomerServiceCommonPhraseStock),
-        TIMCommonLocalizableString(TUICustomerServiceCommonPhraseCheaper),
-        TIMCommonLocalizableString(TUICustomerServiceCommonPhraseGift),
-        TIMCommonLocalizableString(TUICustomerServiceCommonPhraseShipping),
-        TIMCommonLocalizableString(TUICustomerServiceCommonPhraseDelivery),
-        TIMCommonLocalizableString(TUICustomerServiceCommonPhraseArrive),
+        TDeskIMCommonLocalizableString(TUICustomerServiceCommonPhraseStock),
+        TDeskIMCommonLocalizableString(TUICustomerServiceCommonPhraseCheaper),
+        TDeskIMCommonLocalizableString(TUICustomerServiceCommonPhraseGift),
+        TDeskIMCommonLocalizableString(TUICustomerServiceCommonPhraseShipping),
+        TDeskIMCommonLocalizableString(TUICustomerServiceCommonPhraseDelivery),
+        TDeskIMCommonLocalizableString(TUICustomerServiceCommonPhraseArrive),
     ];
 }
 

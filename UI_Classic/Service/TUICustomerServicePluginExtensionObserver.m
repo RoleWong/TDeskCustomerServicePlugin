@@ -30,11 +30,11 @@
 
 static id _instance = nil;
 + (void)load {
-    [TDeskCore registerExtension:TUICore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
-    [TDeskCore registerExtension:TUICore_TUIContactExtension_ContactMenu_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
-    [TDeskCore registerExtension:TUICore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
-    [TDeskCore registerExtension:TUICore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
-    [TDeskCore registerExtension:TUICore_TUIChatExtension_ClickAvatar_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TDeskCore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TDeskCore_TUIContactExtension_ContactMenu_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TDeskCore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TDeskCore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
+    [TDeskCore registerExtension:TDeskCore_TUIChatExtension_ClickAvatar_ClassicExtensionID object:TUICustomerServicePluginExtensionObserver.shareInstance];
 }
 
 + (instancetype)shareInstance {
@@ -52,17 +52,17 @@ static id _instance = nil;
         return nil;
     }
 
-    if ([extensionID isEqualToString:TUICore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID]) {
+    if ([extensionID isEqualToString:TDeskCore_TUIChatExtension_InputViewMoreItem_ClassicExtensionID]) {
         return [self getInputViewMoreItemExtensionForClassicChat:param];
-    } else if ([extensionID isEqualToString:TUICore_TUIChatExtension_InputViewMoreItem_MinimalistExtensionID]) {
+    } else if ([extensionID isEqualToString:TDeskCore_TUIChatExtension_InputViewMoreItem_MinimalistExtensionID]) {
         return [self getInputViewMoreItemExtensionForMinimalistChat:param];
-    } else if ([extensionID isEqualToString:TUICore_TUIContactExtension_ContactMenu_ClassicExtensionID]) {
+    } else if ([extensionID isEqualToString:TDeskCore_TUIContactExtension_ContactMenu_ClassicExtensionID]) {
         return [self getContactMenuExtensionForClassicChat:param];
-    } else if ([extensionID isEqualToString:TUICore_TUIContactExtension_ContactMenu_MinimalistExtensionID]) {
+    } else if ([extensionID isEqualToString:TDeskCore_TUIContactExtension_ContactMenu_MinimalistExtensionID]) {
         return [self getContactMenuExtensionForMinimalistChat:param];
-    } else if ([extensionID isEqualToString:TUICore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID]) {
+    } else if ([extensionID isEqualToString:TDeskCore_TUIChatExtension_NavigationMoreItem_ClassicExtensionID]) {
         return [self getNavigationMoreItemExtensionForClassicChat:param];
-    } else if ([extensionID isEqualToString:TUICore_TUIChatExtension_ClickAvatar_ClassicExtensionID]) {
+    } else if ([extensionID isEqualToString:TDeskCore_TUIChatExtension_ClickAvatar_ClassicExtensionID]) {
         return [self getClickAvtarExtensionForClassicChat:param];
     } else {
         return nil;
@@ -74,7 +74,7 @@ static id _instance = nil;
     if (![param isKindOfClass:NSDictionary.class]) {
         return nil;
     }
-    NSString *userID = [param tui_objectForKey:TUICore_TUIChatExtension_InputViewMoreItem_UserID asClass:NSString.class];
+    NSString *userID = [param tdesk_objectForKey:TDeskCore_TUIChatExtension_InputViewMoreItem_UserID asClass:NSString.class];
     if (![TUICustomerServicePluginPrivateConfig.sharedInstance isCustomerServiceAccount:userID]) {
         return nil;
     }
@@ -84,7 +84,7 @@ static id _instance = nil;
     
     TDeskExtensionInfo *evaluation = [[TDeskExtensionInfo alloc] init];
     evaluation.weight = 100;
-    evaluation.text = TIMCommonLocalizableString(TUIKitMoreEvaluation);
+    evaluation.text = TDeskIMCommonLocalizableString(TUIKitMoreEvaluation);
     evaluation.icon = TIMCommonBundleThemeImage(@"service_more_customer_service_evaluation_img", @"more_customer_service_evaluation");
     evaluation.onClicked = ^(NSDictionary *_Nonnull param) {
         NSData *data = [TDeskTool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_EvaluationTrigger}];
@@ -105,16 +105,16 @@ static id _instance = nil;
     }
     [TUICustomerServicePluginPrivateConfig checkCommercialAbility];
     
-    UINavigationController *nav = [param tui_objectForKey:TUICore_TUIContactExtension_ContactMenu_Nav asClass:UINavigationController.class];
+    UINavigationController *nav = [param tdesk_objectForKey:TDeskCore_TUIContactExtension_ContactMenu_Nav asClass:UINavigationController.class];
     [TDeskTool addValueAddedUnsupportNeedContactNotificationInVC:nav debugOnly:YES];
     
     TDeskExtensionInfo *customerService = [[TDeskExtensionInfo alloc] init];
     customerService.weight = 50;
-    customerService.text = TIMCommonLocalizableString(TUICustomerServiceAccounts);
+    customerService.text = TDeskIMCommonLocalizableString(TUICustomerServiceAccounts);
     customerService.icon = TUICustomerServicePluginBundleThemeImage(@"customer_service_contact_menu_icon_img", @"contact_customer_service");
     customerService.onClicked = ^(NSDictionary *_Nonnull param) {
         if (![TUICustomerServicePluginPrivateConfig isCustomerServiceSupported]) {
-            [TDeskTool postValueAddedUnsupportNeedContactNotification:TIMCommonLocalizableString(TUICustomerService)];
+            [TDeskTool postValueAddedUnsupportNeedContactNotification:TDeskIMCommonLocalizableString(TUICustomerService)];
             NSLog(@"TUICustomerService ability is not supported");
             return;
         }
@@ -133,7 +133,7 @@ static id _instance = nil;
     if (![param isKindOfClass:NSDictionary.class]) {
         return nil;
     }
-    NSString *userID = [param tui_objectForKey:TUICore_TUIChatExtension_NavigationMoreItem_UserID
+    NSString *userID = [param tdesk_objectForKey:TDeskCore_TUIChatExtension_NavigationMoreItem_UserID
                                        asClass:NSString.class];
     if (userID.length == 0 || ![TUICustomerServicePluginPrivateConfig.sharedInstance isCustomerServiceAccount:userID]) {
         return nil;
@@ -142,7 +142,7 @@ static id _instance = nil;
     info.icon = TUIContactBundleThemeImage(@"chat_nav_more_menu_img", @"chat_nav_more_menu");
     info.weight = 200;
     info.onClicked = ^(NSDictionary *_Nonnull param) {
-        UINavigationController *nav = [param tui_objectForKey:TUICore_TUIChatExtension_NavigationMoreItem_PushVC
+        UINavigationController *nav = [param tdesk_objectForKey:TDeskCore_TUIChatExtension_NavigationMoreItem_PushVC
                                                       asClass:UINavigationController.class];
 //        if (nav) {
 //            [[V2TIMManager sharedInstance] getUsersInfo:@[userID]
@@ -162,14 +162,14 @@ static id _instance = nil;
     if (![param isKindOfClass:NSDictionary.class]) {
         return nil;
     }
-    NSString *userID = [param tui_objectForKey:TUICore_TUIChatExtension_ClickAvatar_UserID
+    NSString *userID = [param tdesk_objectForKey:TDeskCore_TUIChatExtension_ClickAvatar_UserID
                                        asClass:NSString.class];
     if (userID.length == 0 || ![TUICustomerServicePluginPrivateConfig.sharedInstance isCustomerServiceAccount:userID]) {
         return nil;
     }
     TDeskExtensionInfo *info = [[TDeskExtensionInfo alloc] init];
     info.onClicked = ^(NSDictionary *_Nonnull param) {
-        UINavigationController *nav = [param tui_objectForKey:TUICore_TUIChatExtension_ClickAvatar_PushVC
+        UINavigationController *nav = [param tdesk_objectForKey:TDeskCore_TUIChatExtension_ClickAvatar_PushVC
                                                       asClass:UINavigationController.class];
 //        if (nav) {
 //            [[V2TIMManager sharedInstance] getUsersInfo:@[userID]
@@ -186,19 +186,19 @@ static id _instance = nil;
 
 #pragma mark -- RaiseExtension
 - (BOOL)onRaiseExtension:(NSString *)extensionID parentView:(UIView *)parentView param:(nullable NSDictionary *)param {
-    if ([extensionID isEqualToString:TUICore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID]) {
+    if ([extensionID isEqualToString:TDeskCore_TUIChatExtension_ChatVCBottomContainer_ClassicExtensionID]) {
         if (param == nil) {
             NSLog(@"TUIChat notify param is invalid");
             return NO;
         }
-        NSString *userID = [param objectForKey:TUICore_TUIChatExtension_ChatVCBottomContainer_UserID];
+        NSString *userID = [param objectForKey:TDeskCore_TUIChatExtension_ChatVCBottomContainer_UserID];
 //        if (![TUICustomerServicePluginPrivateConfig.sharedInstance isOnlineShopping:userID]) {
 //            return NO;
 //        }
         if (![parentView isKindOfClass:UIView.class]) {
             return NO;
         }
-        self.superVC = [param objectForKey:TUICore_TUIChatExtension_ChatVCBottomContainer_VC];
+        self.superVC = [param objectForKey:TDeskCore_TUIChatExtension_ChatVCBottomContainer_VC];
         TUICustomerServicePluginMenuView *view = [[TUICustomerServicePluginMenuView alloc] initWithDataSource:TUICustomerServicePluginConfig.sharedInstance.menuItems];
         [parentView addSubview:view];
         [view updateFrame];
@@ -211,9 +211,9 @@ static id _instance = nil;
 
 // Menu Event reponse
 - (void)notifyHeightChanged {
-    NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight: @46};
-    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
-                  subKey:TUICore_TUIPluginNotify_PluginViewDidAddToSuperview
+    NSDictionary *param = @{TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight: @46};
+    [TDeskCore notifyEvent:TDeskCore_TUIPluginNotify
+                  subKey:TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperview
                   object:nil
                    param:param];
 }

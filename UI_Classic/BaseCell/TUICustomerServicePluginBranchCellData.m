@@ -34,7 +34,7 @@
 }
 
 + (NSString *)getDisplayString:(V2TIMMessage *)message {
-    return TIMCommonLocalizableString(TUICustomerServiceBranchMessage);
+    return TDeskIMCommonLocalizableString(TUICustomerServiceBranchMessage);
 }
 
 // Override

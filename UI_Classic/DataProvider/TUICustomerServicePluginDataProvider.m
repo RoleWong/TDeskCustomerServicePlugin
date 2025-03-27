@@ -17,9 +17,9 @@
     if (message == nil) {
         return;
     }
-    NSDictionary *param = @{TUICore_TUIChatService_SendMessageMethod_MsgKey: message};
-    [TDeskCore callService:TUICore_TUIChatService
-                  method:TUICore_TUIChatService_SendMessageMethod
+    NSDictionary *param = @{TDeskCore_TUIChatService_SendMessageMethod_MsgKey: message};
+    [TDeskCore callService:TDeskCore_TUIChatService
+                  method:TDeskCore_TUIChatService_SendMessageMethod
                    param:param];
 }
 
@@ -28,9 +28,9 @@
     if (message == nil) {
         return;
     }
-    NSDictionary *param = @{TUICore_TUIChatService_SendMessageMethod_MsgKey: message};
-    [TDeskCore callService:TUICore_TUIChatService
-                  method:TUICore_TUIChatService_SendMessageMethod
+    NSDictionary *param = @{TDeskCore_TUIChatService_SendMessageMethod_MsgKey: message};
+    [TDeskCore callService:TDeskCore_TUIChatService
+                  method:TDeskCore_TUIChatService_SendMessageMethod
                    param:param];
 }
 
@@ -39,9 +39,9 @@
     if (message == nil) {
         return;
     }
-    NSDictionary *param = @{TUICore_TUIChatService_SendMessageMethodWithoutUpdateUI_MsgKey: message};
-    [TDeskCore callService:TUICore_TUIChatService
-                  method:TUICore_TUIChatService_SendMessageMethodWithoutUpdateUI
+    NSDictionary *param = @{TDeskCore_TUIChatService_SendMessageMethodWithoutUpdateUI_MsgKey: message};
+    [TDeskCore callService:TDeskCore_TUIChatService
+                  method:TDeskCore_TUIChatService_SendMessageMethodWithoutUpdateUI
                    param:param];
 }
 

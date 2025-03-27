@@ -201,7 +201,7 @@
     [inputItemView addSubview:inputField];
 
     UILabel *errorLabel = [[UILabel alloc] init];
-    errorLabel.text = TIMCommonLocalizableString(TUICustomerTaskFieldRequired);
+    errorLabel.text = TDeskIMCommonLocalizableString(TUICustomerTaskFieldRequired);
     errorLabel.font = [UIFont systemFontOfSize:12];
     errorLabel.accessibilityIdentifier = @"errorLabel";
     errorLabel.textColor = [UIColor redColor];
@@ -281,7 +281,7 @@
     [selectionItemView addSubview:optionsStackView];
 
     UILabel *errorLabel = [[UILabel alloc] init];
-    errorLabel.text = TIMCommonLocalizableString(TUICustomerTaskSelectionFieldRequired);
+    errorLabel.text = TDeskIMCommonLocalizableString(TUICustomerTaskSelectionFieldRequired);
     errorLabel.accessibilityIdentifier = @"errorLabel";
     errorLabel.font = [UIFont systemFontOfSize:12];
     errorLabel.textColor = [UIColor redColor];
@@ -401,7 +401,7 @@
 - (void)setupSubmitButton {
     self.submitButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.submitButton.frame = CGRectMake((self.bounds.size.width - 100) / 2, self.bounds.size.height - 70, 100, 40);
-    [self.submitButton setTitle:TIMCommonLocalizableString(TUICustomerSubmit) forState:UIControlStateNormal];
+    [self.submitButton setTitle:TDeskIMCommonLocalizableString(TUICustomerSubmit) forState:UIControlStateNormal];
     self.submitButton.backgroundColor = [UIColor systemBlueColor];
     [self.submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.submitButton.layer.cornerRadius = 8;
@@ -576,14 +576,14 @@
         self.confirmButton.layer.cornerRadius = 14;
         self.confirmButton.layer.masksToBounds = YES;
         self.confirmButton.backgroundColor = [UIColor colorWithRed:0.0 green:0.48 blue:1.0 alpha:1.0];
-        [self.confirmButton setTitle:TIMCommonLocalizableString(TUICustomerFillin) forState:UIControlStateNormal];
+        [self.confirmButton setTitle:TDeskIMCommonLocalizableString(TUICustomerFillin) forState:UIControlStateNormal];
         [self.confirmButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.confirmButton.contentEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 4);
         [self.confirmButton addTarget:self action:@selector(confirmButtonTapped) forControlEvents:UIControlEventTouchUpInside];
         [self.container addSubview:self.confirmButton];
 
-        [TDeskCore registerEvent:TUICore_TUIChatNotify
-                        subKey:TUICore_TUIChatNotify_KeyboardWillHideSubKey
+        [TDeskCore registerEvent:TDeskCore_TUIChatNotify
+                        subKey:TDeskCore_TUIChatNotify_KeyboardWillHideSubKey
                         object:self];
     }
     return self;
@@ -598,15 +598,15 @@
     if (data.nodeStatus == 0) {
         self.canClick = YES;
         self.iconImageView.image = TUICustomerServicePluginBundleThemeImage(@"information_collection", @"information_collection");
-        [self.confirmButton setTitle:TIMCommonLocalizableString(TUICustomerFillinNow) forState:UIControlStateNormal];
+        [self.confirmButton setTitle:TDeskIMCommonLocalizableString(TUICustomerFillinNow) forState:UIControlStateNormal];
     } else if (data.nodeStatus == 1) {
         self.canClick = NO;
         self.iconImageView.image = TUICustomerServicePluginBundleThemeImage(@"information_collection", @"information_collection");
-        [self.confirmButton setTitle:TIMCommonLocalizableString(TUICustomerNotEditable) forState:UIControlStateNormal];
+        [self.confirmButton setTitle:TDeskIMCommonLocalizableString(TUICustomerNotEditable) forState:UIControlStateNormal];
     } else if (data.nodeStatus == 2) {
         self.canClick = YES;
         self.iconImageView.image = TUICustomerServicePluginBundleThemeImage(@"information_collection_done", @"information_collection_done");
-        [self.confirmButton setTitle:TIMCommonLocalizableString(TUICustomerView) forState:UIControlStateNormal];
+        [self.confirmButton setTitle:TDeskIMCommonLocalizableString(TUICustomerView) forState:UIControlStateNormal];
     }
     
     [self setNeedsUpdateConstraints];
@@ -653,8 +653,8 @@
 
 #pragma mark - TDeskNotificationProtocol
 - (void)onNotifyEvent:(NSString *)key subKey:(NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param {
-    if ([key isEqualToString:TUICore_TUIChatNotify] &&
-        [subKey isEqualToString:TUICore_TUIChatNotify_KeyboardWillHideSubKey]) {
+    if ([key isEqualToString:TDeskCore_TUIChatNotify] &&
+        [subKey isEqualToString:TDeskCore_TUIChatNotify_KeyboardWillHideSubKey]) {
     }
 }
 

@@ -15,7 +15,7 @@
 //@interface TUICustomerServicePluginUserController ()
 //
 //@property (nonatomic, copy) NSArray<NSArray *> *dataList;
-//@property (nonatomic, strong) TUINaviBarIndicatorView *titleView;
+//@property (nonatomic, strong) TDeskNaviBarIndicatorView *titleView;
 //@property (nonatomic, strong) V2TIMUserInfo *userInfo;
 //
 //@end
@@ -43,8 +43,8 @@
 //    [self.tableView registerClass:[TUICommonContactProfileCardCell class] forCellReuseIdentifier:@"CardCell"];
 //    self.tableView.delaysContentTouches = NO;
 //    
-//    _titleView = [[TUINaviBarIndicatorView alloc] init];
-//    [_titleView setTitle:TIMCommonLocalizableString(ProfileDetails)];
+//    _titleView = [[TDeskNaviBarIndicatorView alloc] init];
+//    [_titleView setTitle:TDeskIMCommonLocalizableString(ProfileDetails)];
 //    self.navigationItem.titleView = _titleView;
 //    self.navigationItem.title = @"";
 //
@@ -61,7 +61,7 @@
 //            personal.avatarImage = DefaultAvatarImage;
 //            personal.avatarUrl = [NSURL URLWithString:self.userInfo.faceURL];
 //            personal.name = self.userInfo.nickName;
-//            personal.signature = TIMCommonLocalizableString(no_personal_signature);
+//            personal.signature = TDeskIMCommonLocalizableString(no_personal_signature);
 //            personal.reuseId = @"CardCell";
 //            personal.showSignature = YES;
 //            personal;
@@ -73,7 +73,7 @@
 //        NSMutableArray *inlist = @[].mutableCopy;
 //        [inlist addObject:({
 //            TUICommonContactSwitchCellData *data = TUICommonContactSwitchCellData.new;
-//            data.title = TIMCommonLocalizableString(ProfileMessageDoNotDisturb);
+//            data.title = TDeskIMCommonLocalizableString(ProfileMessageDoNotDisturb);
 //            data.cswitchSelector = @selector(onMessageDoNotDisturb:);
 //            data.reuseId = @"SwitchCell";
 //            __weak typeof(self) weakSelf = self;
@@ -97,7 +97,7 @@
 //        NSMutableArray *inlist = @[].mutableCopy;
 //        [inlist addObject:({
 //            TUICommonContactTextCellData *data = TUICommonContactTextCellData.new;
-//            data.key = TIMCommonLocalizableString(TUIKitClearAllChatHistory);
+//            data.key = TDeskIMCommonLocalizableString(TUIKitClearAllChatHistory);
 //            data.showAccessory = YES;
 //            data.cselector = @selector(onClearHistoryChatMessage:);
 //            data.reuseId = @"TextCell";
@@ -115,16 +115,16 @@
 //        NSString *userID = self.userInfo.userID;
 //        @weakify(self);
 //        UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil
-//                                                                    message:TIMCommonLocalizableString(TUIKitClearAllChatHistoryTips)
+//                                                                    message:TDeskIMCommonLocalizableString(TUIKitClearAllChatHistoryTips)
 //                                                             preferredStyle:UIAlertControllerStyleAlert];
-//        [ac tuitheme_addAction:[UIAlertAction actionWithTitle:TIMCommonLocalizableString(Confirm)
+//        [ac tuitheme_addAction:[UIAlertAction actionWithTitle:TDeskIMCommonLocalizableString(Confirm)
 //                                                        style:UIAlertActionStyleDestructive
 //                                                      handler:^(UIAlertAction *_Nonnull action) {
 //            @strongify(self);
 //            [V2TIMManager.sharedInstance clearC2CHistoryMessage:userID
 //                succ:^{
-//                  [TDeskCore notifyEvent:TUICore_TUIConversationNotify
-//                                subKey:TUICore_TUIConversationNotify_ClearConversationUIHistorySubKey
+//                  [TDeskCore notifyEvent:TDeskCore_TUIConversationNotify
+//                                subKey:TDeskCore_TUIConversationNotify_ClearConversationUIHistorySubKey
 //                                object:self
 //                                 param:nil];
 //                  [TDeskTool makeToast:@"success"];
@@ -133,7 +133,7 @@
 //                  [TDeskTool makeToastError:code msg:desc];
 //                }];
 //          }]];
-//        [ac tuitheme_addAction:[UIAlertAction actionWithTitle:TIMCommonLocalizableString(Cancel) style:UIAlertActionStyleCancel handler:nil]];
+//        [ac tuitheme_addAction:[UIAlertAction actionWithTitle:TDeskIMCommonLocalizableString(Cancel) style:UIAlertActionStyleCancel handler:nil]];
 //        [self presentViewController:ac animated:YES completion:nil];
 //    }
 //}

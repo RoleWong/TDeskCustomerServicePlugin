@@ -55,8 +55,8 @@
         [self setupListCollectionViews];
         [self setupInputCollectionViews];
         
-        [TDeskCore registerEvent:TUICore_TUIChatNotify
-                        subKey:TUICore_TUIChatNotify_KeyboardWillHideSubKey
+        [TDeskCore registerEvent:TDeskCore_TUIChatNotify
+                        subKey:TDeskCore_TUIChatNotify_KeyboardWillHideSubKey
                         object:self];
     }
     return self;
@@ -262,8 +262,8 @@
 
 #pragma mark - TDeskNotificationProtocol
 - (void)onNotifyEvent:(NSString *)key subKey:(NSString *)subKey object:(nullable id)anObject param:(nullable NSDictionary *)param {
-    if ([key isEqualToString:TUICore_TUIChatNotify] &&
-        [subKey isEqualToString:TUICore_TUIChatNotify_KeyboardWillHideSubKey]) {
+    if ([key isEqualToString:TDeskCore_TUIChatNotify] &&
+        [subKey isEqualToString:TDeskCore_TUIChatNotify_KeyboardWillHideSubKey]) {
         [self.inputTextField resignFirstResponder];
     }
 }

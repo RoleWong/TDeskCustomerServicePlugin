@@ -49,7 +49,7 @@
 }
 
 + (NSString *)getDisplayString:(V2TIMMessage *)message {
-    return TIMCommonLocalizableString(TUICustomerServiceSatisfactionEvaluation);
+    return TDeskIMCommonLocalizableString(TUICustomerServiceSatisfactionEvaluation);
 }
 
 - (instancetype)initWithDirection:(TDeskMsgDirection)direction

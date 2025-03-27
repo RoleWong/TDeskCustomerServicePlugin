@@ -35,9 +35,9 @@
     }
     
     if ([param[@"src"] isEqualToString: BussinessID_Src_CustomerService_Timeout]) {
-        return TIMCommonLocalizableString(TUICustomerServiceTimeout);
+        return TDeskIMCommonLocalizableString(TUICustomerServiceTimeout);
     } else if ([param[@"src"] isEqualToString: BussinessID_Src_CustomerService_End]) {
-        return TIMCommonLocalizableString(TUICustomerServiceEnd);
+        return TDeskIMCommonLocalizableString(TUICustomerServiceEnd);
     }
     
     return nil;

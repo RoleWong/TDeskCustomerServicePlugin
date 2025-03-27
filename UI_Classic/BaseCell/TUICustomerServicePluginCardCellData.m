@@ -27,7 +27,7 @@
 }
 
 + (NSString *)getDisplayString:(V2TIMMessage *)message {
-    return TIMCommonLocalizableString(TUICustomerServiceCardMessage);
+    return TDeskIMCommonLocalizableString(TUICustomerServiceCardMessage);
 }
 
 // Override

@@ -58,10 +58,10 @@
     }
     self.innerMessage = newMessage;
     self.content = [self.class getDisplayString:newMessage];
-    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
-                  subKey:TUICore_TUIPluginNotify_DidChangePluginViewSubKey
+    [TDeskCore notifyEvent:TDeskCore_TUIPluginNotify
+                  subKey:TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey
                   object:nil
-                   param:@{TUICore_TUIPluginNotify_DidChangePluginViewSubKey_Data : self}];
+                   param:@{TDeskCore_TUIPluginNotify_DidChangePluginViewSubKey_Data : self}];
     return YES;
 }
 

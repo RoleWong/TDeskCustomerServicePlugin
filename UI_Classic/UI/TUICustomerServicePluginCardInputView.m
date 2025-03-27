@@ -247,7 +247,7 @@
         _headerLabel.font = [UIFont systemFontOfSize:18];
         _headerLabel.numberOfLines = 0;
         _headerLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        _headerLabel.text = TIMCommonLocalizableString(TUICustomerServiceFillProductInfo);
+        _headerLabel.text = TDeskIMCommonLocalizableString(TUICustomerServiceFillProductInfo);
         _headerLabel.textColor = TUICustomerServicePluginDynamicColor(@"customer_service_card_header_text_color", @"#000000");
     }
     return _headerLabel;
@@ -271,7 +271,7 @@
 - (UIButton *)submitButton {
     if (!_submitButton) {
         _submitButton = [UIButton new];
-        [_submitButton setTitle:TIMCommonLocalizableString(TUICustomerServiceSubmitProductInfo) forState:UIControlStateNormal];
+        [_submitButton setTitle:TDeskIMCommonLocalizableString(TUICustomerServiceSubmitProductInfo) forState:UIControlStateNormal];
         _submitButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         _submitButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_submitButton setTitleColor:TUICustomerServicePluginDynamicColor(@"customer_service_card_submit_text_color", @"#FFFFFF")
@@ -320,7 +320,7 @@
 - (UIButton *)closeButton {
     if (!_closeButton) {
         _closeButton = [UIButton new];
-        [_closeButton setTitle:TIMCommonLocalizableString(TUICustomerServiceClose) forState:UIControlStateNormal];
+        [_closeButton setTitle:TDeskIMCommonLocalizableString(TUICustomerServiceClose) forState:UIControlStateNormal];
         _closeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         _closeButton.titleLabel.font = [UIFont systemFontOfSize:16];
         [_closeButton setTitleColor:TUICustomerServicePluginDynamicColor(@"customer_service_card_close_text_color", @"#3370FF")
@@ -338,20 +338,20 @@
 
 - (NSArray *)defaultInfo {
     return @[
-        @{@"desc": TIMCommonLocalizableString(TUICustomerServiceName),
-          @"placeHolder": TIMCommonLocalizableString(TUICustomerServiceFillProductName),
+        @{@"desc": TDeskIMCommonLocalizableString(TUICustomerServiceName),
+          @"placeHolder": TDeskIMCommonLocalizableString(TUICustomerServiceFillProductName),
           @"content": @"手工编织皮革提包2023新品女士迷你简约大方高端有档次"
         },
-        @{@"desc": TIMCommonLocalizableString(TUICustomerServiceDesc),
-          @"placeHolder": TIMCommonLocalizableString(TUICustomerServiceFillProductDesc),
+        @{@"desc": TDeskIMCommonLocalizableString(TUICustomerServiceDesc),
+          @"placeHolder": TDeskIMCommonLocalizableString(TUICustomerServiceFillProductDesc),
           @"content": @"¥788"
         },
-        @{@"desc": TIMCommonLocalizableString(TUICustomerServicePic),
-          @"placeHolder": TIMCommonLocalizableString(TUICustomerServiceFillPicLink),
+        @{@"desc": TDeskIMCommonLocalizableString(TUICustomerServicePic),
+          @"placeHolder": TDeskIMCommonLocalizableString(TUICustomerServiceFillPicLink),
           @"content": @"https://qcloudimg.tencent-cloud.cn/raw/a811f634eab5023f973c9b224bc07a51.png"
         },
-        @{@"desc": TIMCommonLocalizableString(TUICustomerServiceJumpLink),
-          @"placeHolder": TIMCommonLocalizableString(TUICustomerServiceFillJumpLink),
+        @{@"desc": TDeskIMCommonLocalizableString(TUICustomerServiceJumpLink),
+          @"placeHolder": TDeskIMCommonLocalizableString(TUICustomerServiceFillJumpLink),
           @"content": @"https://cloud.tencent.com/document/product/269"
         }
     ];

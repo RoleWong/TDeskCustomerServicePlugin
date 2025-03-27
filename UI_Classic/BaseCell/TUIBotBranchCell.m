@@ -91,7 +91,7 @@
         
         _headerRefreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _headerRefreshBtn.backgroundColor = [UIColor clearColor];
-        [_headerRefreshBtn setTitle:TIMCommonLocalizableString(TUIChatBotChangeQuestion) forState:UIControlStateNormal];
+        [_headerRefreshBtn setTitle:TDeskIMCommonLocalizableString(TUIChatBotChangeQuestion) forState:UIControlStateNormal];
         [_headerRefreshBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [_headerRefreshBtn setTitleColor:TUICustomerServicePluginDynamicColor(@"bot_branch_cell_refresh_btn_color", @"#006EFF") forState:UIControlStateNormal];
         [_headerRefreshBtn addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventTouchUpInside];
@@ -144,9 +144,9 @@
 }
 
 - (void)notifyCellSizeChanged {
-    NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.customData.innerMessage};
-    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
-                  subKey:TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey
+    NSDictionary *param = @{TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.customData.innerMessage};
+    [TDeskCore notifyEvent:TDeskCore_TUIPluginNotify
+                  subKey:TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey
                   object:nil
                    param:param];
 }

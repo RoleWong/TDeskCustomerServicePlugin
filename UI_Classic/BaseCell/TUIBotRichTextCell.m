@@ -51,7 +51,7 @@
         [_webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
         _webView.scrollView.scrollEnabled = NO;
         
-        NSString *bundlePath = TUIBundlePath(TUICustomerServicePluginBundle,TUICustomerServicePluginBundle_Key_Class);
+        NSString *bundlePath = TDeskBundlePath(TUICustomerServicePluginBundle,TUICustomerServicePluginBundle_Key_Class);
         NSString *path = [bundlePath stringByAppendingPathComponent:@"markdown.html"];
         if (path) {
             NSURL *url = [NSURL fileURLWithPath:path];
@@ -195,9 +195,9 @@
 }
 
 - (void)notifyCellSizeChanged {
-    NSDictionary *param = @{TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.webViewData.innerMessage};
-    [TDeskCore notifyEvent:TUICore_TUIPluginNotify
-                  subKey:TUICore_TUIPluginNotify_PluginViewSizeChangedSubKey
+    NSDictionary *param = @{TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey_Message : self.webViewData.innerMessage};
+    [TDeskCore notifyEvent:TDeskCore_TUIPluginNotify
+                  subKey:TDeskCore_TUIPluginNotify_PluginViewSizeChangedSubKey
                   object:nil
                    param:param];
 }
