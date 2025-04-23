@@ -28,6 +28,15 @@
     return g_sharedInstance;
 }
 
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _showHumanServiceMenuItem = YES;
+    }
+    return self;
+}
+
 #pragma mark - Public
 - (void)setCustomerServiceAccounts:(NSArray *)customerServiceAccounts {
     [TUICustomerServicePluginPrivateConfig sharedInstance].customerServiceAccounts = customerServiceAccounts;
@@ -57,6 +66,17 @@
 #pragma mark - Private
 - (NSArray *)defaultMenuItems {
     NSMutableArray *dataSource = [NSMutableArray new];
+
+    if (self.showHumanServiceMenuItem) {
+        TUICustomerServicePluginMenuCellData *toHuman = [TUICustomerServicePluginMenuCellData new];
+        NSString *toHumanMsg = TDeskIMCommonLocalizableString(TUICustomerHumanService);
+        toHuman.title = toHumanMsg;
+        toHuman.icon = TUICustomerServicePluginBundleThemeImage(@"to_human_img", @"to_human");
+        toHuman.onClick = ^{
+            [TUICustomerServicePluginDataProvider sendTextMessage:toHumanMsg];
+        };
+        [dataSource addObject:toHuman];
+    }
     
     return [dataSource copy];
 }

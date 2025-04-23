@@ -43,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<TUICustomerServicePluginConfigDataSource> delegate;
 
+@property (nonatomic, assign) BOOL showHumanServiceMenuItem;
+
 /**
  * Set up customer service account list
  */

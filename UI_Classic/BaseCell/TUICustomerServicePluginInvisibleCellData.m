@@ -7,6 +7,7 @@
 
 #import "TUICustomerServicePluginInvisibleCellData.h"
 #import "TUICustomerServicePluginPrivateConfig.h"
+#import "TUICustomerServicePluginConfig.h"
 
 @implementation TUICustomerServicePluginInvisibleCellData
 
@@ -24,6 +25,19 @@
         NSInteger menuSendRuleFlag = [content[@"menuSendRuleFlag"] integerValue];
         [TUICustomerServicePluginPrivateConfig sharedInstance].canEvaluate = menuSendRuleFlag >> 2;
     }
+    
+    if ([param[@"src"] isEqualToString: BussinessID_Src_CustomerService_Agent_Status]) {
+        NSDictionary *content = param[@"content"];
+        NSString *updateSeatStatus = [content[@"content"] description];
+
+        if ([updateSeatStatus isEqualToString:@"inSeat"]) {
+            [TUICustomerServicePluginConfig sharedInstance].showHumanServiceMenuItem = NO;
+        } else if ([updateSeatStatus isEqualToString:@"outSeat"]) {
+            [TUICustomerServicePluginConfig sharedInstance].showHumanServiceMenuItem = YES;
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TUICustomerServiceMenuItemUpdatedNotification" object:nil];
+    }
+    
     return cellData;
 }
 

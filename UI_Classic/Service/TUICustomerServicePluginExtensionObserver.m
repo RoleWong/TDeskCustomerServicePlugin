@@ -192,18 +192,27 @@ static id _instance = nil;
             return NO;
         }
         NSString *userID = [param objectForKey:TDeskCore_TUIChatExtension_ChatVCBottomContainer_UserID];
-//        if (![TUICustomerServicePluginPrivateConfig.sharedInstance isOnlineShopping:userID]) {
-//            return NO;
-//        }
         if (![parentView isKindOfClass:UIView.class]) {
             return NO;
         }
         self.superVC = [param objectForKey:TDeskCore_TUIChatExtension_ChatVCBottomContainer_VC];
+        BOOL isExist = NO;
+        for (UIView *subview in parentView.subviews) {
+                    if ([subview isKindOfClass:[TUICustomerServicePluginMenuView class]]) {
+                        [subview removeFromSuperview];
+                        isExist = YES;
+                        break;
+                    }
+                }
         TUICustomerServicePluginMenuView *view = [[TUICustomerServicePluginMenuView alloc] initWithDataSource:TUICustomerServicePluginConfig.sharedInstance.menuItems];
         [parentView addSubview:view];
         [view updateFrame];
         
-        [self notifyHeightChanged];
+        if(!isExist){
+            [self notifyHeightChanged];
+        } else {
+//            [self notifyHeightChangedSmaller];
+        }
         return YES;
     }
     return NO;
@@ -212,6 +221,15 @@ static id _instance = nil;
 // Menu Event reponse
 - (void)notifyHeightChanged {
     NSDictionary *param = @{TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight: @46};
+    [TDeskCore notifyEvent:TDeskCore_TUIPluginNotify
+                  subKey:TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperview
+                  object:nil
+                   param:param];
+}
+
+// Menu Event reponse
+- (void)notifyHeightChangedSmaller {
+    NSDictionary *param = @{TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight: @0};
     [TDeskCore notifyEvent:TDeskCore_TUIPluginNotify
                   subKey:TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperview
                   object:nil

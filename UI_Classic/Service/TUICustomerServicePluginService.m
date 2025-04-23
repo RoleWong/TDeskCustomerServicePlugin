@@ -80,6 +80,13 @@
     ];
     [TDeskCore callService:TDeskCore_TUIChatService
                   method:TDeskCore_TUIChatService_AppendCustomMessageMethod
+                   param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Agent_Status),
+                           TMessageCell_Name : @"TUICustomerServicePluginInvisibleCell",
+                           TMessageCell_Data_Name : @"TUICustomerServicePluginInvisibleCellData"
+                         }
+    ];
+    [TDeskCore callService:TDeskCore_TUIChatService
+                  method:TDeskCore_TUIChatService_AppendCustomMessageMethod
                    param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_Branch),
                            TMessageCell_Name : @"TUICustomerServicePluginBranchCell",
                            TMessageCell_Data_Name : @"TUICustomerServicePluginBranchCellData"

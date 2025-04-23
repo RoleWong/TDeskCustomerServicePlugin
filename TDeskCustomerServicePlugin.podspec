@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'TDeskCustomerServicePlugin'
-  spec.version      = '2.8.2'
+  spec.version      = '2.8.3'
   spec.platform     = :ios
   spec.ios.deployment_target = '9.0'
   spec.license      = { :type => 'Proprietary',
@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   
   spec.dependency 'TDeskCore', '~> 2.8.0'
   spec.dependency 'TDeskCommon', '~> 2.8.0'
-  spec.dependency 'TDeskChat', '~> 2.8.2'
+  spec.dependency 'TDeskChat', '~> 2.8.3'
   spec.dependency 'SDWebImage'
   
   spec.requires_arc = true
