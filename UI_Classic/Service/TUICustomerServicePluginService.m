@@ -169,6 +169,15 @@
                            TMessageCell_Data_Name : @"TUIBotStreamTextCellData"
                          }
     ];
+    
+    [TDeskCore callService:TDeskCore_TUIChatService
+                  method:TDeskCore_TUIChatService_AppendCustomMessageMethod
+                   param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_THINKING),
+                           TMessageCell_Name : @"TUICustomerServicePluginThinkingCell",
+                           TMessageCell_Data_Name : @"TUICustomerServicePluginThinkingCellData"
+                         }
+    ];
+    
 }
 
 #pragma mark - TDeskNotificationProtocol
