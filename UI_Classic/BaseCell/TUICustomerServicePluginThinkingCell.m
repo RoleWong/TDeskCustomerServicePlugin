@@ -6,7 +6,7 @@
 //
 
 #import "TUICustomerServicePluginThinkingCell.h"
-#import <SVGKit/SVGKit.h>
+//#import <SVGKit/SVGKit.h>
 #import <TDeskCore/TDesk_TUICore.h>
 
 @implementation TUICustomerServicePluginThinkingCell
@@ -27,20 +27,23 @@
         NSString *bundlePath = TDeskBundlePath(TUICustomerServicePluginBundle,TUICustomerServicePluginBundle_Key_Class);
         NSBundle *customBundle = [NSBundle bundleWithPath:bundlePath];
         
-        NSString *imageName = @"loading_message.svg";
+        NSString *imageName = @"loading_message";
         
-        SVGKImage *svgImage = [SVGKImage imageNamed:imageName inBundle:customBundle];
-        if (svgImage) {
-            self.circle1 = [[SVGKFastImageView alloc] initWithSVGKImage:svgImage];
+        UIImage *image = [UIImage imageNamed:imageName inBundle:customBundle compatibleWithTraitCollection:nil];
+        if (image) {
+            self.circle1 = [[UIImageView alloc] initWithImage:image];
             self.circle1.frame = CGRectMake(10, 13, 20, 20);
+            self.circle1.contentMode = UIViewContentModeScaleAspectFit;
             [self.circleView addSubview:self.circle1];
             
-            self.circle2 = [[SVGKFastImageView alloc] initWithSVGKImage:svgImage];
+            self.circle2 = [[UIImageView alloc] initWithImage:image];
             self.circle2.frame = CGRectMake(30, 13, 20, 20);
+            self.circle2.contentMode = UIViewContentModeScaleAspectFit;
             [self.circleView addSubview:self.circle2];
             
-            self.circle3 = [[SVGKFastImageView alloc] initWithSVGKImage:svgImage];
+            self.circle3 = [[UIImageView alloc] initWithImage:image];
             self.circle3.frame = CGRectMake(50, 13, 20, 20);
+            self.circle3.contentMode = UIViewContentModeScaleAspectFit;
             [self.circleView addSubview:self.circle3];
             
             [self.bubbleView addSubview:_circleView];
@@ -69,7 +72,7 @@
     [self.circle3.layer addAnimation:animatorSet3 forKey:@"animation3"];
 }
 
-- (CAAnimationGroup *)createAnimatorSet:(SVGKFastImageView *)imageView duration:(NSTimeInterval)duration {
+- (CAAnimationGroup *)createAnimatorSet:(UIImageView *)imageView duration:(NSTimeInterval)duration {
     // 透明度动画
     CABasicAnimation *alphaAnimator = [CABasicAnimation animationWithKeyPath:@"opacity"];
     alphaAnimator.fromValue = @(1.0);
@@ -111,11 +114,11 @@
         self.contentView.frame = CGRectMake(0, 0, 80, 46);
         self.frame = CGRectMake(0, 0, 80, 46);
         self.hidden = false;
-        
+
         self.circle1.hidden = false;
         self.circle2.hidden = false;
         self.circle3.hidden = false;
-       
+        [self startAnimation];
         [self hideViewAfterDelay:60];
     } else {
          [self hideThinkingView];
@@ -138,7 +141,8 @@
 
 - (void)hideThinkingView {
     _circleView.frame = CGRectMake(0, 0, 0, 0);
-    self.circle3.hidden = YES;
+//    self.circleView.hidden = YES;
+//    self.circle3.hidden = YES;
 }
 
 + (CGFloat)getHeight:(TUICustomerServicePluginThinkingCellData *)data withWidth:(CGFloat)width {

@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name         = 'TDeskCustomerServicePlugin'
   spec.version      = '2.9.01'
   spec.platform     = :ios
-  spec.ios.deployment_target = '13.0'
+  spec.ios.deployment_target = '11.0'
   spec.license      = { :type => 'Proprietary',
       :text => <<-LICENSE
         copyright 2017 tencent Ltd. All rights reserved.
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'TDeskCommon', '~> 2.9.01'
   spec.dependency 'TDeskChat', '~> 2.9.01'
   spec.dependency 'SDWebImage'
-  spec.dependency 'SVGKit'
+#  spec.dependency 'SVGKit'
 
   spec.requires_arc = true
 
