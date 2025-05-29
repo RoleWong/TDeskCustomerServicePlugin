@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) SEL cselector;
 @property (nonatomic, strong) id target;
+@property (nonatomic, assign) Boolean autoSendMessageUseContent;
 @property (nonatomic, copy) void (^onClick)(void);
 
 - (CGSize)calcSize;
