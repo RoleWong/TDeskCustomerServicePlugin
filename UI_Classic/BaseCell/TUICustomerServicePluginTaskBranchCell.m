@@ -181,10 +181,31 @@
         return;
     }
     NSString *content = self.customData.items[indexPath.row];
-    [self.customData.items removeAllObjects];
-    [self notifyCellSizeChanged];
+    if (self.customData.optionType == 0) {
+        [self.customData.items removeAllObjects];
+        [self notifyCellSizeChanged];
+            
+        [TUICustomerServicePluginDataProvider sendTextMessage:content];
+    } else {
+        NSMutableDictionary *taskInfo = self.customData.taskInfo;
+        if (!taskInfo) {
+            NSLog(@"Error: taskInfo is nil");
+            return;
+        }
+        NSMutableDictionary *branchOptionInfo = [[NSMutableDictionary alloc] init];
+        [branchOptionInfo setValue:[taskInfo valueForKey:@"nodeID"] forKey:@"nodeID"];
+        [branchOptionInfo setValue:[taskInfo valueForKey:@"taskID"] forKey:@"taskID"];
+        [branchOptionInfo setValue:[taskInfo valueForKey:@"env"] forKey:@"env"];
         
-    [TUICustomerServicePluginDataProvider sendTextMessage:content];
+        NSDictionary *optionInfoDict = @{
+            @"BranchOptionInfo": branchOptionInfo
+        };
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:optionInfoDict options:NSJSONWritingPrettyPrinted error:&error];
+        if (!error) {
+            [TUICustomerServicePluginDataProvider sendTextMessageWithCloudData:content cloudCustomData:jsonData];
+        }
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

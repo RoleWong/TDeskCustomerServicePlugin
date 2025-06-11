@@ -178,6 +178,13 @@
                          }
     ];
     
+    [TDeskCore callService:TDeskCore_TUIChatService
+                  method:TDeskCore_TUIChatService_AppendCustomMessageMethod
+                   param:@{BussinessID : GetCustomerServiceBussinessID(BussinessID_Src_CustomerService_CLIENT_TIPS),
+                           TMessageCell_Name : @"TUICustomerServicePluginClientTipsCell",
+                           TMessageCell_Data_Name : @"TUICustomerServicePluginClientTipsCellData"
+                         }
+    ];
 }
 
 #pragma mark - TDeskNotificationProtocol

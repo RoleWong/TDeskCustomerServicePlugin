@@ -22,7 +22,14 @@
     NSDictionary *content = param[@"content"];
     cellData.taskStatus = [param[@"status"] integerValue];
     cellData.header = content[@"header"];
-    if (cellData.taskStatus != 0) {
+    cellData.optionType = [param[@"optionType"] integerValue];
+    if (cellData.optionType == 1) {
+        NSDictionary *taskInfo = param[@"taskInfo"];
+        [cellData.taskInfo setValue:taskInfo[@"nodeID"] forKey:@"nodeID"];
+        [cellData.taskInfo setValue:taskInfo[@"taskID"] forKey:@"taskID"];
+        [cellData.taskInfo setValue:taskInfo[@"env"] forKey:@"env"];
+    }
+    if(cellData.optionType == 0 && cellData.taskStatus != 0) {
         cellData.items = [NSMutableArray array];
     } else {
         NSArray *items = content[@"items"];
@@ -50,6 +57,13 @@
         _items = [[NSMutableArray alloc] init];
     }
     return _items;
+}
+
+- (NSMutableDictionary *)taskInfo {
+    if (!_taskInfo) {
+        _taskInfo = [[NSMutableDictionary alloc] init];
+    }
+    return _taskInfo;
 }
 
 @end
