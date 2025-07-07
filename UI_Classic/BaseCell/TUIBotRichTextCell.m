@@ -180,10 +180,20 @@
 - (void)updateCellSize {
     @weakify(self);
     [self.webView evaluateJavaScript:@"document.body.scrollWidth" completionHandler:^(id _Nullable result,NSError *_Nullable error) {
+        if (error || ![result isKindOfClass:[NSNumber class]]) {
+            return;
+        }
+        
         CGFloat scrollWidth= [result doubleValue];
         [self.webView evaluateJavaScript:@"document.body.scrollHeight"completionHandler:^(id _Nullable result,NSError*_Nullable error) {
             @strongify(self)
+            if (error || ![result isKindOfClass:[NSNumber class]]) {
+                return;
+            }
             CGFloat scrollHeight = [result doubleValue];
+            if (scrollWidth <= 0) {
+                return;
+            }
             CGFloat ratio =  CGRectGetWidth(self.webView.frame) /scrollWidth;
             CGFloat webHeight = scrollHeight * ratio;
             if (self.webViewData.cellHeight != webHeight) {
