@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TUICustomerServicePluginDataProvider : NSObject
 
 + (void)sendTextMessage:(NSString *)text;
-
++ (void)sendTextMessageWithCloudData:(NSString *)text cloudCustomData:(NSData *)cloudCustomData;
 + (void)sendCustomMessage:(NSData *)data;
 + (void)sendCustomMessageWithoutUpdateUI:(NSData *)data;
 

@@ -18,7 +18,9 @@
 @implementation TUICustomerServicePluginMenuCellData
 
 - (CGSize)calcSize {
-    return [TUICustomerServicePluginDataProvider calcMenuCellSize:self.title];
+    CGSize size = [TUICustomerServicePluginDataProvider calcMenuCellSize:self.title];
+    size.width = size.width + 12;
+    return size;
 }
 
 @end
@@ -75,6 +77,9 @@
 }
 
 - (void)buttonClicked:(UIButton *)sender {
+    if (self.cellData.autoSendMessageUseContent) {
+        [TUICustomerServicePluginDataProvider sendTextMessage:self.cellData.title];
+    }
     if (self.cellData.onClick) {
         self.cellData.onClick();
     }

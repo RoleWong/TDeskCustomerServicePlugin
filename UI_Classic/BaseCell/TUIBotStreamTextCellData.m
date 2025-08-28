@@ -7,12 +7,11 @@
 
 #import "TUIBotStreamTextCellData.h"
 #import <TDeskCore/TDesk_TUICore.h>
+#import "TUICustomerServicePluginUtil.h"
 
 #ifndef CGFLOAT_CEIL
 #ifdef CGFLOAT_IS_DOUBLE
 #define CGFLOAT_CEIL(value) ceil(value)
-#else
-#define CGFLOAT_CEIL(value) ceilf(value)
 #endif
 #endif
 
@@ -29,6 +28,13 @@
     cellData.displayedContentLength = 0;
     cellData.reuseId = TTextMessageCell_ReuseId;
     cellData.status = Msg_Status_Init;
+    
+    if ([TUICustomerServicePluginUtil canShowAINote:message]) {
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        cellData.bottomContainerSize = CGSizeMake(screenWidth, 20);
+    } else {
+        cellData.bottomContainerSize = CGSizeZero;
+    }
     return cellData;
 }
 

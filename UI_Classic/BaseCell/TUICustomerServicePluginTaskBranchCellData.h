@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger taskStatus;
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, copy) NSString *selectedContent;
-
+@property (nonatomic, assign) NSInteger optionType;
+@property (nonatomic, strong) NSMutableDictionary *taskInfo;
 @end
 
 NS_ASSUME_NONNULL_END

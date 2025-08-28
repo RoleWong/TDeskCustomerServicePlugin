@@ -23,6 +23,19 @@
                    param:param];
 }
 
++ (void)sendTextMessageWithCloudData:(NSString *)text cloudCustomData:(NSData *)cloudCustomData {
+    V2TIMMessage *message = [[V2TIMManager sharedInstance] createTextMessage:text];
+
+    if (message == nil) {
+        return;
+    }
+    [message setCloudCustomData:cloudCustomData];
+    NSDictionary *param = @{TDeskCore_TUIChatService_SendMessageMethod_MsgKey: message};
+    [TDeskCore callService:TDeskCore_TUIChatService
+                  method:TDeskCore_TUIChatService_SendMessageMethod
+                   param:param];
+}
+
 + (void)sendCustomMessage:(NSData *)data {
     V2TIMMessage *message = [[V2TIMManager sharedInstance] createCustomMessage:[self supplyCustomerServiceID:data]];
     if (message == nil) {

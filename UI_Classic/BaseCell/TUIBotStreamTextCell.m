@@ -48,6 +48,21 @@
         });
         dispatch_resume(data.timer);
     }
+    
+    UILabel *aiDisclaimerLabel = [[UILabel alloc] init];
+    aiDisclaimerLabel.text = TDeskIMCommonLocalizableString(TUIAILabel);
+    aiDisclaimerLabel.textColor = [UIColor colorWithRed:0.58 green:0.60 blue:0.62 alpha:1.0];
+    aiDisclaimerLabel.font = [UIFont systemFontOfSize:12.0];
+    aiDisclaimerLabel.textAlignment = NSTextAlignmentLeft;
+
+    [self.bottomContainer addSubview:aiDisclaimerLabel];
+
+    aiDisclaimerLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+        [aiDisclaimerLabel.leadingAnchor constraintEqualToAnchor:self.bottomContainer.leadingAnchor],
+        [aiDisclaimerLabel.topAnchor constraintEqualToAnchor:self.bottomContainer.topAnchor],
+        [aiDisclaimerLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.bottomContainer.trailingAnchor]
+    ]];
 }
 
 - (CGRect)getAttributeStringRect:(NSAttributedString *)attributeString {
