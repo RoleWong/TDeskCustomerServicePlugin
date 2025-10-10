@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'TDeskCustomerServicePlugin'
-  spec.version      = '2.9.015'
+  spec.version      = '2.9.016'
   spec.platform     = :ios
   spec.ios.deployment_target = '9.0'
   spec.license      = { :type => 'Proprietary',
@@ -13,9 +13,9 @@ Pod::Spec.new do |spec|
   spec.authors      = 'tencent video cloud'
   spec.summary      = 'TDeskCustomerServicePlugin'
   
-  spec.dependency 'TDeskCore', '~> 2.9.015'
-  spec.dependency 'TDeskCommon', '~> 2.9.015'
-  spec.dependency 'TDeskChat', '~> 2.9.015'
+  spec.dependency 'TDeskCore', '~> 2.9.016'
+  spec.dependency 'TDeskCommon', '~> 2.9.016'
+  spec.dependency 'TDeskChat', '~> 2.9.016'
   spec.dependency 'SDWebImage'
 #  spec.dependency 'SVGKit'
 
