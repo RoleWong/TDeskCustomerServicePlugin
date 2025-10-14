@@ -32,7 +32,12 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        // 显示人工服务（仅在转人工成功前显示）
         _showHumanServiceMenuItem = YES;
+        // 显示服务评价（仅在转人工成功后显示）
+        _showServiceRatingMenuItem = NO;
+        // 显示结束对话（仅在转人工成功后显示）
+        _showEndHumanServiceMenuItem = NO;
     }
     return self;
 }
@@ -66,8 +71,10 @@
 #pragma mark - Private
 - (NSArray *)defaultMenuItems {
     NSMutableArray *dataSource = [NSMutableArray new];
+    
+    TUICustomerServicePluginPrivateConfig *privateConfig = [TUICustomerServicePluginPrivateConfig sharedInstance];
 
-    if (self.showHumanServiceMenuItem) {
+    if (privateConfig.enableShowHumanService && self.showHumanServiceMenuItem) {
         TUICustomerServicePluginMenuCellData *toHuman = [TUICustomerServicePluginMenuCellData new];
         NSString *toHumanMsg = TDeskIMCommonLocalizableString(TUICustomerHumanService);
         toHuman.title = toHumanMsg;
@@ -76,6 +83,39 @@
             [TUICustomerServicePluginDataProvider sendTextMessage:toHumanMsg];
         };
         [dataSource addObject:toHuman];
+    }
+    
+    if (privateConfig.enableShowServiceRating && self.showServiceRatingMenuItem) {
+        TUICustomerServicePluginMenuCellData *serviceRatingBtn = [TUICustomerServicePluginMenuCellData new];
+        NSString *serviceRatingMsg = TDeskIMCommonLocalizableString(TUICustomerServiceRating);
+        serviceRatingBtn.title = serviceRatingMsg;
+        serviceRatingBtn.icon = TUICustomerServicePluginBundleThemeImage(@"service_rating_img", @"service_rating");
+        serviceRatingBtn.onClick = ^{
+            NSString *language = [TDeskGlobalization getPreferredLanguage];
+            NSData *data = [TDeskTool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_EvaluationTrigger,
+                                                            @"customerServicePlugin": @0,
+                                                            @"triggeredContent": @{@"language": language}
+                                                          }];
+            [TUICustomerServicePluginDataProvider sendCustomMessageWithoutUpdateUI:data];
+        };
+        [dataSource addObject:serviceRatingBtn];
+    }
+    
+    if (privateConfig.enableShowEndHumanService && self.showEndHumanServiceMenuItem) {
+        TUICustomerServicePluginMenuCellData *endServiceBtn = [TUICustomerServicePluginMenuCellData new];
+        NSString *endHumanServiceMsg = TDeskIMCommonLocalizableString(TUICustomerEndService);
+        endServiceBtn.title = endHumanServiceMsg;
+        endServiceBtn.icon = TUICustomerServicePluginBundleThemeImage(@"end_human_service_img", @"end_human_service");
+        endServiceBtn.onClick = ^{
+            
+            NSString *language = [TDeskGlobalization getPreferredLanguage];
+            NSData *data = [TDeskTool dictionary2JsonData:@{@"src": BussinessID_Src_CustomerService_End_Session,
+                                                            @"customerServicePlugin": @0,
+                                                            @"triggeredContent": @{@"language": language}
+                                                          }];
+            [TUICustomerServicePluginDataProvider sendCustomMessageWithoutUpdateUI:data];
+        };
+        [dataSource addObject:endServiceBtn];
     }
     
     return [dataSource copy];

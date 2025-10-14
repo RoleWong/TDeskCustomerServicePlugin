@@ -31,9 +31,25 @@
         NSString *updateSeatStatus = [content[@"content"] description];
 
         if ([updateSeatStatus isEqualToString:@"inSeat"]) {
-            [TUICustomerServicePluginConfig sharedInstance].showHumanServiceMenuItem = NO;
+            if ([TUICustomerServicePluginPrivateConfig sharedInstance].enableShowHumanService) {
+                [TUICustomerServicePluginConfig sharedInstance].showHumanServiceMenuItem = NO;
+            }
+            if ([TUICustomerServicePluginPrivateConfig sharedInstance].enableShowServiceRating) {
+                [TUICustomerServicePluginConfig sharedInstance].showServiceRatingMenuItem = YES;
+            }
+            if ([TUICustomerServicePluginPrivateConfig sharedInstance].enableShowEndHumanService) {
+                [TUICustomerServicePluginConfig sharedInstance].showEndHumanServiceMenuItem = YES;
+            }
         } else if ([updateSeatStatus isEqualToString:@"outSeat"]) {
-            [TUICustomerServicePluginConfig sharedInstance].showHumanServiceMenuItem = YES;
+            if ([TUICustomerServicePluginPrivateConfig sharedInstance].enableShowHumanService) {
+                [TUICustomerServicePluginConfig sharedInstance].showHumanServiceMenuItem = YES;
+            }
+            if ([TUICustomerServicePluginPrivateConfig sharedInstance].enableShowServiceRating) {
+                [TUICustomerServicePluginConfig sharedInstance].showServiceRatingMenuItem = NO;
+            }
+            if ([TUICustomerServicePluginPrivateConfig sharedInstance].enableShowEndHumanService) {
+                [TUICustomerServicePluginConfig sharedInstance].showEndHumanServiceMenuItem = NO;
+            }
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TUICustomerServiceMenuItemUpdatedNotification" object:nil];
     }

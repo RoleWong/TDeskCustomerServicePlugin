@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL canEvaluate;
 @property (nonatomic, copy) NSArray *customerServiceAccounts;
+@property (nonatomic, assign) BOOL enableShowHumanService;
+@property (nonatomic, assign) BOOL enableShowServiceRating;
+@property (nonatomic, assign) BOOL enableShowEndHumanService;
 
 - (BOOL)isCustomerServiceAccount:(NSString *)userID;
 - (BOOL)isOnlineShopping:(NSString *)userID;

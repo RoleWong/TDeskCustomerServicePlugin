@@ -20,6 +20,9 @@ static NSString *gDefaultCustomerServiceAccount = @"@customer_service_account";
     dispatch_once(&onceToken, ^{
         g_sharedInstance = [[TUICustomerServicePluginPrivateConfig alloc] init];
         g_sharedInstance.customerServiceAccounts = @[gDefaultCustomerServiceAccount];
+        g_sharedInstance.enableShowHumanService = NO;
+        g_sharedInstance.enableShowServiceRating = NO;
+        g_sharedInstance.enableShowEndHumanService = NO;
         [self checkCommercialAbility];
     });
     return g_sharedInstance;

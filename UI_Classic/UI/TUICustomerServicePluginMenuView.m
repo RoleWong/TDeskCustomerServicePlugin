@@ -61,9 +61,18 @@
     [self.button setTitle:cellData.title forState:UIControlStateNormal];
     if(cellData.icon){
         [self.button setImage:cellData.icon forState:UIControlStateNormal];
-        self.button.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
-        self.button.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
-          
+                BOOL isRTL = ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft);
+
+                if (isRTL) {
+                    self.button.imageEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+                    self.button.titleEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+                } else {
+                    self.button.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+                    self.button.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5);
+                }
+    } else {
+        self.button.imageEdgeInsets = UIEdgeInsetsZero;
+        self.button.titleEdgeInsets = UIEdgeInsetsZero;
     }
     [self.button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -125,7 +134,8 @@
 
 #pragma mark - Public
 - (void)updateFrame {
-    self.mm_left(0).mm_top(0).mm_width(Screen_Width).mm_height(46);
+    CGFloat height = (self.dataSource.count > 0) ? 46 : 0;
+    self.mm_left(0).mm_top(0).mm_width(Screen_Width).mm_height(height);
     self.backView.mm_fill();
 }
 

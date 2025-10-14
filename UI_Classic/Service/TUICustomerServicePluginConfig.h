@@ -45,6 +45,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL showHumanServiceMenuItem;
 
+@property (nonatomic, assign) BOOL showEndHumanServiceMenuItem;
+
+@property (nonatomic, assign) BOOL showServiceRatingMenuItem;
+
 /**
  * Set up customer service account list
  */

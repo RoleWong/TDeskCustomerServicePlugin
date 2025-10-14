@@ -23,6 +23,7 @@
 @interface TUICustomerServicePluginExtensionObserver () <TDeskExtensionProtocol>
 
 @property (nonatomic, weak) TDeskBaseChatViewController *superVC;
+@property (nonatomic, assign) CGFloat lastMenuHeight;
 
 @end
 
@@ -94,7 +95,7 @@ static id _instance = nil;
 }
 
 - (NSArray<TDeskExtensionInfo *> *)getInputViewMoreItemExtensionForMinimalistChat:(NSDictionary *)param {
-    // todo: ç²¾ç®€ç‰ˆ chat é¡µé¢åº•éƒ¨è¾“å…¥æ¡†æ‰©å±•
+    // TODO: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ chat ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
     return nil;
 }
 
@@ -204,23 +205,30 @@ static id _instance = nil;
                         break;
                     }
                 }
-        TUICustomerServicePluginMenuView *view = [[TUICustomerServicePluginMenuView alloc] initWithDataSource:TUICustomerServicePluginConfig.sharedInstance.menuItems];
-        [parentView addSubview:view];
-        [view updateFrame];
+        NSArray *menuItems = TUICustomerServicePluginConfig.sharedInstance.menuItems;
+        CGFloat height = (menuItems.count > 0) ? 46 : 0;
         
-        if(!isExist){
-            [self notifyHeightChanged];
-        } else {
-//            [self notifyHeightChangedSmaller];
+        // Only create and add view if there are menu items
+        if (menuItems.count > 0) {
+            TUICustomerServicePluginMenuView *view = [[TUICustomerServicePluginMenuView alloc] initWithDataSource:menuItems];
+            [parentView addSubview:view];
+            [view updateFrame];
         }
+        
+        // Always notify if height changed or if it's the first time
+        if (!isExist || self.lastMenuHeight != height) {
+            [self notifyHeightChanged:height];
+            self.lastMenuHeight = height;
+        }
+        
         return YES;
     }
     return NO;
 }
 
 // Menu Event reponse
-- (void)notifyHeightChanged {
-    NSDictionary *param = @{TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight: @46};
+- (void)notifyHeightChanged:(CGFloat)height {
+    NSDictionary *param = @{TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperviewSubKey_PluginViewHeight: @(height)};
     [TDeskCore notifyEvent:TDeskCore_TUIPluginNotify
                   subKey:TDeskCore_TUIPluginNotify_PluginViewDidAddToSuperview
                   object:nil
